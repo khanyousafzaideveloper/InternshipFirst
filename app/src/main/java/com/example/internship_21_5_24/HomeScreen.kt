@@ -2,12 +2,10 @@ package com.example.internship_21_5_24
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -19,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -28,7 +25,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-@Preview
 @Composable
 fun HomeScreen(){
     Box(modifier = Modifier.fillMaxSize()) {
@@ -42,7 +38,7 @@ fun HomeScreen(){
             text = "Free IMEI Checker & iCloud Bypass",
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier
-                .padding(top = 56.dp, start = 39.dp, end = 39.dp)
+                .padding(top = 56.dp, start = 39.dp+16.dp, end = 39.dp)
                 .width(282.dp),
             color = Color.White,
             fontWeight = FontWeight(700),
@@ -52,6 +48,9 @@ fun HomeScreen(){
 //            ),
             textAlign = TextAlign.Center
         )
+        Box(modifier = Modifier
+            .align(alignment = Alignment.TopStart)
+            .padding(start = 16.dp)) {
         Text(
             text = "Welcome",
             modifier = Modifier
@@ -76,7 +75,7 @@ fun HomeScreen(){
                 lineHeight = 14.sp
             )
         )
-        Box(modifier = Modifier.align(alignment = Alignment.TopStart)) {
+
             Box(
                 modifier = Modifier
                     .padding(top = 174.dp, start = 20.dp)
@@ -381,4 +380,11 @@ fun HomeScreen(){
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun preview11(){
+    BackgroundImage()
+    HomeScreen()
 }

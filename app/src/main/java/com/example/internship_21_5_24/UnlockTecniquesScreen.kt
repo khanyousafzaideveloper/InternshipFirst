@@ -2,13 +2,17 @@ package com.example.internship_21_5_24
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
@@ -23,12 +27,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-@Preview
+//@Preview
 @Composable
-fun UnlockTechniquesScreen() {
-
+fun UnlockTechniquesCard(card: UnlockTechniquesData) {
         Box(modifier= Modifier
-            .padding(start = 20.dp, top = 95.dp, end = 20.dp)
+            .padding(start = 20.dp, top = 16.dp, end = 20.dp)
             //.width(320.dp)
             //.height(76.dp)
             .fillMaxWidth()
@@ -48,10 +51,10 @@ fun UnlockTechniquesScreen() {
                     )
                 Column {
                     Text(
-                        text = "Unlock By Software",
+                        text = card.title,
                         modifier = Modifier
                             .padding(top = 4.dp, start = 4.dp)
-                            .width(134.dp),
+                            .width(206.dp),
                         fontWeight = FontWeight(800),
                         fontSize = 14.sp,
                         style = TextStyle(
@@ -59,7 +62,7 @@ fun UnlockTechniquesScreen() {
                         )
                     )
                     Text(
-                        text = "In this information you will learn who to unlock the lock of mobile or device.",
+                        text = card.info,
                         modifier = Modifier
                             .padding(4.dp)
                             .width(209.dp),
@@ -73,3 +76,24 @@ fun UnlockTechniquesScreen() {
             }
         }
     }
+
+
+@Composable
+fun UnlockTechListScreen(cards: List<UnlockTechniquesData>) {
+    LazyColumn(
+       // contentPadding = PaddingValues(0.dp),
+       // verticalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        items(cards) { card ->
+            UnlockTechniquesCard(card = card)
+        }
+    }
+}
+
+@Preview
+@Composable
+fun Preview(){
+    Box(modifier = Modifier){ Image(painter = painterResource(id = R.drawable.home_8), contentDescription = null)}
+    val items = UnlockTechDataList
+    UnlockTechListScreen(cards = items)
+}

@@ -27,18 +27,27 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Box(modifier = Modifier.fillMaxSize()) {
-                        Image(
-                            painter = painterResource(id = R.drawable.home_8),
-                            contentDescription = "null",
-                            modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Crop
-                        )
-                       // HomeScreen()
-                        UnlockTechniquesScreen()
-                    }
+
+                    BackgroundImage()
+                  //  HomeScreen()
+                  //  UnlockTechListScreen(cards = UnlockTechDataList)
+                 //   UnlockBySoftware(cards = UnlockBySoftwareList)
+                 //   SimUnlockScreen(cards = SimUnlockList)
+                    SimUnlockForm()
                 }
             }
         }
+    }
+}
+
+@Composable
+fun BackgroundImage(){
+    Box(modifier = Modifier.fillMaxSize() ) {
+        Image(
+            painter = painterResource(id = R.drawable.home_8),
+            contentDescription = "null",
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop
+        )
     }
 }
