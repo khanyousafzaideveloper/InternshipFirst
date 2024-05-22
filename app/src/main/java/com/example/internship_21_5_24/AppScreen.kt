@@ -32,12 +32,12 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun HomeScreen(){
     Box(modifier = Modifier.fillMaxSize()) {
-        Image(
-            painter = painterResource(id = R.drawable.home_8),
-            contentDescription = "null",
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop
-        )
+//        Image(
+//            painter = painterResource(id = R.drawable.home_8),
+//            contentDescription = "null",
+//            modifier = Modifier.fillMaxSize(),
+//            contentScale = ContentScale.Crop
+//        )
         Text(
             text = "Free IMEI Checker & iCloud Bypass",
             style = MaterialTheme.typography.bodyLarge,
@@ -65,7 +65,7 @@ fun HomeScreen(){
             )
         )
         Text(
-            text = "A Magical Way to Unlock or bypas",
+            text = "A Magical Way to Unlock or bypass",
             modifier = Modifier
                 .padding(top = 130.dp, start = 20.dp)
                 .width(224.dp),
@@ -76,7 +76,7 @@ fun HomeScreen(){
                 lineHeight = 14.sp
             )
         )
-
+        Box(modifier = Modifier.align(alignment = Alignment.TopStart)) {
             Box(
                 modifier = Modifier
                     .padding(top = 174.dp, start = 20.dp)
@@ -380,5 +380,5 @@ fun HomeScreen(){
                 }
             }
         }
-    
+    }
 }
