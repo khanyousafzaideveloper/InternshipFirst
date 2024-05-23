@@ -29,11 +29,13 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     BackgroundImage()
-                  //  HomeScreen()
+                    HomeScreen()
                   //  UnlockTechListScreen(cards = UnlockTechDataList)
                  //   UnlockBySoftware(cards = UnlockBySoftwareList)
                  //   SimUnlockScreen(cards = SimUnlockList)
-                    SimUnlockForm()
+                 //   SimUnlockScreen(cards = SimUnlockList)
+                  //  SimUnlockForm()
+                  //  SecretCodeListScreen(secretCodes = secretCodesList)
                 }
             }
         }

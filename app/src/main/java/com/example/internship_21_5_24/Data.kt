@@ -43,3 +43,20 @@ val brandNameList = listOf(
     BrandNames("BLACKBERRY"),
     BrandNames("MOTOROLA")
 )
+
+data class SecretCodes(
+    val title: String,
+    val number: String
+)
+
+val secretCodesList= listOf(
+    SecretCodes("Display IMEI Number","*#06#"),
+    SecretCodes("General Test Mode","*#0*#"),
+    SecretCodes("Software & WH Info","*#12580*369#"),
+    SecretCodes("Bluetooth Address Info","*#232337#"),
+    SecretCodes("Proximity Sensor Test Mode","*#0588#"),
+    SecretCodes("Data Create Menu","*#273283*255*3282*#"),
+    SecretCodes("Software Version Info","*#44336#"),
+
+
+    )

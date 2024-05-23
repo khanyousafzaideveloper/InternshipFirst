@@ -5,16 +5,19 @@
       <entry key="PreviewSelectBrand">
         <State />
       </entry>
-      <entry key="SelectBrandScreen">
+      <entry key="SecretCodesPreview">
         <State />
       </entry>
-      <entry key="UnlockTechniquesScreen">
+      <entry key="SelectBrandScreen">
         <State />
       </entry>
       <entry key="app">
         <State />
       </entry>
       <entry key="preview11">
+        <State />
+      </entry>
+      <entry key="preview4">
         <State />
       </entry>
     </value>

@@ -36,8 +36,6 @@ import androidx.compose.ui.unit.sp
 fun SelectBrandScreen(brand: BrandNames){
     Box(modifier= Modifier
         .padding(start = 20.dp, top = 16.dp, end = 20.dp)
-        //.width(320.dp)
-        //.height(76.dp)
         .fillMaxWidth()
         .clip(RoundedCornerShape(8.dp))
         .clickable {  }
