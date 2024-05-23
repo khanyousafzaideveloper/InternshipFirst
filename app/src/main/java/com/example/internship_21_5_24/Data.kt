@@ -30,3 +30,16 @@ val SimUnlockList = listOf(
     UnlockTechniquesData("HTC SIM Unlock", "This information you will learn how to unlock the lock of mobile device."),
     UnlockTechniquesData("SIM Unlock with App", "This information you will learn how to unlock the lock of mobile device."),
 )
+
+
+data class BrandNames (
+    val name: String
+)
+val brandNameList = listOf(
+    BrandNames("SAMSUNG"),
+    BrandNames( "REAlME"),
+    BrandNames("INFINIX"),
+    BrandNames("LENOVO"),
+    BrandNames("BLACKBERRY"),
+    BrandNames("MOTOROLA")
+)

@@ -18,6 +18,5 @@ fun SimUnlockScreen(cards: List<UnlockTechniquesData>) {
 @Composable
 fun Preview3(){
     BackgroundImage()
-    val items = UnlockBySoftwareList
-    UnlockTechListScreen(cards = items)
+    UnlockTechListScreen(cards = SimUnlockList)
 }

@@ -2,6 +2,12 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="PreviewSelectBrand">
+        <State />
+      </entry>
+      <entry key="SelectBrandScreen">
+        <State />
+      </entry>
       <entry key="UnlockTechniquesScreen">
         <State />
       </entry>
