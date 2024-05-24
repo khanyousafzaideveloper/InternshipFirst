@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -22,6 +23,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,6 +33,12 @@ import androidx.compose.ui.unit.sp
 //@Preview
 @Composable
 fun UnlockTechniquesCard(card: UnlockTechniquesData) {
+    val fontRaleway = FontFamily(
+        Font(R.font.raleway_bold, FontWeight.Normal)
+    )
+    val fontRoboto = FontFamily(
+        Font(R.font.roboto_regular, FontWeight.Normal)
+    )
         Box(modifier= Modifier
             .padding(start = 20.dp, top = 16.dp, end = 20.dp)
             //.width(320.dp)
@@ -56,6 +65,7 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData) {
                             .padding(top = 4.dp, start = 4.dp)
                             .width(206.dp),
                         fontWeight = FontWeight(800),
+                        fontFamily = fontRaleway,
                         fontSize = 14.sp,
                         style = TextStyle(
                             lineHeight = 13.sp
@@ -93,7 +103,10 @@ fun UnlockTechListScreen(cards: List<UnlockTechniquesData>) {
 @Preview
 @Composable
 fun Preview(){
-    Box(modifier = Modifier){ Image(painter = painterResource(id = R.drawable.home_8), contentDescription = null)}
-    val items = UnlockTechDataList
-    UnlockTechListScreen(cards = items)
+    Box(modifier = Modifier){
+        BackgroundImage()
+        val items = UnlockTechDataList
+        UnlockTechListScreen(cards = items)
+    }
+
 }

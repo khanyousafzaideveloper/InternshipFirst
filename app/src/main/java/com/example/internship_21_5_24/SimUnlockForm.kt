@@ -44,7 +44,7 @@ fun SimUnlockForm() {
             Text(
                 text = "IMEI Inspection",
                 modifier = Modifier
-                    .padding(top = 95.dp)
+                    .padding(top = 16.dp)
                     .width(116.dp),
                 style = TextStyle(
                     fontSize = 16.sp,
