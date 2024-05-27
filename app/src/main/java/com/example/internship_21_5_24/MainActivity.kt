@@ -59,50 +59,15 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyApp(){
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = Color(0xFF561F7F),
-                    titleContentColor = Color(0xFFFFFFFF),
-                ),
-                title = {
-                    Text(
-                        "Top App Bar",
-                        modifier = Modifier.fillMaxWidth() .padding(end=16.dp),
-                        textAlign = TextAlign.Center
-                    )
-                },
-                navigationIcon = {
-                    IconButton(onClick = { /* do something */ }) {
-                        Icon(
-                            imageVector = Icons.Filled.KeyboardArrowLeft,
-                            contentDescription = "Localized description",
-                            tint = Color(0xFFFFFFFF),
-                        )
-                    }
-                },
-                )
-        },
-    ) {
-            innerPadding ->
-        Box(modifier = Modifier.padding(innerPadding)) {
-            BackgroundImage()
-             HomeScreen()
-            //UnlockTechListScreen(cards = UnlockTechDataList)
-            //  UnlockBySoftware(cards = UnlockBySoftwareList)
-            //  SimUnlockScreen(cards = SimUnlockList)
-            //  SimUnlockForm()
-            //  SecretCodeListScreen(secretCodes = secretCodesList)
-        }
-    }
-
-
-
-
-
-
+    BackgroundImage()
+    HomeScreen()
+    //UnlockTechListScreen(cards = UnlockTechDataList)
+    //  UnlockBySoftware(cards = UnlockBySoftwareList)
+    //  SimUnlockScreen(cards = SimUnlockList)
+    //  SimUnlockForm()
+    //  SecretCodeListScreen(secretCodes = secretCodesList)
 }
+
 @Composable
 fun BackgroundImage(){
     Box(modifier = Modifier.fillMaxSize() ) {

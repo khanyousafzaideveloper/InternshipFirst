@@ -62,7 +62,7 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData) {
                     Text(
                         text = card.title,
                         modifier = Modifier
-                            .padding(top = 4.dp, start = 4.dp)
+                            .padding(top = 4.dp, start = 8.dp)
                             .width(206.dp),
                         fontWeight = FontWeight(800),
                         fontFamily = fontRaleway,
@@ -74,9 +74,10 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData) {
                     Text(
                         text = card.info,
                         modifier = Modifier
-                            .padding(4.dp)
-                            .width(209.dp),
+                            .padding(start = 8.dp, top = 4.dp, bottom = 4.dp, end = 20.dp),
+                          //  .width(209.dp)
                         fontWeight = FontWeight(400),
+                        fontFamily = fontRoboto,
                         fontSize = 12.sp,
                         style = TextStyle(
                             lineHeight = 15.sp
@@ -100,13 +101,46 @@ fun UnlockTechListScreen(cards: List<UnlockTechniquesData>) {
     }
 }
 
-@Preview
-@Composable
-fun Preview(){
-    Box(modifier = Modifier){
-        BackgroundImage()
-        val items = UnlockTechDataList
-        UnlockTechListScreen(cards = items)
-    }
-
-}
+//
+//@Preview(showBackground = true, name = "Small Phone", widthDp = 320, heightDp = 480)
+//@Composable
+//fun SmallPhonePreview() {
+//    BackgroundImage()
+//    UnlockTechListScreen(UnlockTechDataList)
+//}
+//
+//@Preview(showBackground = true, name = "Normal Phone", widthDp = 360, heightDp = 640)
+//@Composable
+//fun NormalPhonePreview() {
+//    BackgroundImage()
+//    UnlockTechListScreen(UnlockTechDataList)
+//
+//}
+//
+//@Preview(showBackground = true, name = "Large Phone", widthDp = 400, heightDp = 800)
+//@Composable
+//fun LargePhonePreview() {
+//    BackgroundImage()
+//    UnlockTechListScreen(UnlockTechDataList)
+//}
+//
+//@Preview(showBackground = true, name = "Extra Large Phone", widthDp = 480, heightDp = 853)
+//@Composable
+//fun ExtraLargePhonePreview() {
+//    BackgroundImage()
+//    UnlockTechListScreen(UnlockTechDataList)
+//}
+//
+//@Preview(showBackground = true, name = "Large Tablet", widthDp = 800, heightDp = 1280)
+//@Composable
+//fun LargeTabletPreview() {
+//    BackgroundImage()
+//    UnlockTechListScreen(UnlockTechDataList)
+//}
+//
+//@Preview(showBackground = true, name = "Full HD TV", widthDp = 1920, heightDp = 1080)
+//@Composable
+//fun FullHdTvPreview() {
+//    BackgroundImage()
+//    UnlockTechListScreen(UnlockTechDataList)
+//}

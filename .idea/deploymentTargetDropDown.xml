@@ -2,19 +2,32 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="Preview">
+      <entry key="Full_HD_TV_SecretCodesPreview - Full HD TV">
         <State />
       </entry>
-      <entry key="PreviewSelectBrand">
+      <entry key="Preview">
         <State />
       </entry>
       <entry key="SecretCodesPreview">
         <State />
       </entry>
-      <entry key="SelectBrandScreen">
-        <State />
-      </entry>
       <entry key="app">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="$USER_HOME$/.android/avd/Android_TV_720p_API_28.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-05-24T10:30:05.697557144Z" />
+        </State>
+      </entry>
+      <entry key="preview11">
         <State />
       </entry>
       <entry key="preview4">

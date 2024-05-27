@@ -85,10 +85,51 @@ fun SelectBrandListScreen(brands: List<BrandNames>) {
 }
 
 
-@Preview
-@Composable
-fun PreviewSelectBrand(){
-    BackgroundImage()
-
-    SelectBrandListScreen(brands = brandNameList)
-}
+//@Preview
+//@Composable
+//fun PreviewSelectBrand(){
+//    BackgroundImage()
+//
+//    SelectBrandListScreen(brands = brandNameList)
+//}
+//@Preview(showBackground = true, name = "Small Phone", widthDp = 320, heightDp = 480)
+//@Composable
+//fun SmallPhonePreview_SelectBrand() {
+//    BackgroundImage()
+//    SelectBrandListScreen(brands = brandNameList)
+//}
+//
+//@Preview(showBackground = true, name = "Normal Phone", widthDp = 360, heightDp = 640)
+//@Composable
+//fun NormalPhonePreview_SelectBrand() {
+//    BackgroundImage()
+//    SelectBrandListScreen(brands = brandNameList)
+//}
+//
+//@Preview(showBackground = true, name = "Large Phone", widthDp = 400, heightDp = 800)
+//@Composable
+//fun LargePhonePreview_SelectBrand() {
+//    BackgroundImage()
+//    SelectBrandListScreen(brands = brandNameList)
+//}
+//
+//@Preview(showBackground = true, name = "Extra Large Phone", widthDp = 480, heightDp = 853)
+//@Composable
+//fun ExtraLargePhonePreview_SelectBrand() {
+//    BackgroundImage()
+//    SelectBrandListScreen(brands = brandNameList)
+//}
+//
+//@Preview(showBackground = true, name = "Large Tablet", widthDp = 800, heightDp = 1280)
+//@Composable
+//fun LargeTabletPreview_SelectBrand() {
+//    BackgroundImage()
+//    SelectBrandListScreen(brands = brandNameList)
+//}
+//
+//@Preview(showBackground = true, name = "Full HD TV", widthDp = 1920, heightDp = 1080)
+//@Composable
+//fun FullHdTvPreview_SelectBrand() {
+//    BackgroundImage()
+//    SelectBrandListScreen(brands = brandNameList)
+//}
