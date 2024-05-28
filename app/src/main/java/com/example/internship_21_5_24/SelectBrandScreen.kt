@@ -3,17 +3,12 @@ package com.example.internship_21_5_24
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -85,51 +79,16 @@ fun SelectBrandListScreen(brands: List<BrandNames>) {
 }
 
 
-//@Preview
-//@Composable
-//fun PreviewSelectBrand(){
-//    BackgroundImage()
-//
-//    SelectBrandListScreen(brands = brandNameList)
-//}
+
+@Preview
 //@Preview(showBackground = true, name = "Small Phone", widthDp = 320, heightDp = 480)
-//@Composable
-//fun SmallPhonePreview_SelectBrand() {
-//    BackgroundImage()
-//    SelectBrandListScreen(brands = brandNameList)
-//}
-//
 //@Preview(showBackground = true, name = "Normal Phone", widthDp = 360, heightDp = 640)
-//@Composable
-//fun NormalPhonePreview_SelectBrand() {
-//    BackgroundImage()
-//    SelectBrandListScreen(brands = brandNameList)
-//}
-//
 //@Preview(showBackground = true, name = "Large Phone", widthDp = 400, heightDp = 800)
-//@Composable
-//fun LargePhonePreview_SelectBrand() {
-//    BackgroundImage()
-//    SelectBrandListScreen(brands = brandNameList)
-//}
-//
 //@Preview(showBackground = true, name = "Extra Large Phone", widthDp = 480, heightDp = 853)
-//@Composable
-//fun ExtraLargePhonePreview_SelectBrand() {
-//    BackgroundImage()
-//    SelectBrandListScreen(brands = brandNameList)
-//}
-//
 //@Preview(showBackground = true, name = "Large Tablet", widthDp = 800, heightDp = 1280)
-//@Composable
-//fun LargeTabletPreview_SelectBrand() {
-//    BackgroundImage()
-//    SelectBrandListScreen(brands = brandNameList)
-//}
-//
 //@Preview(showBackground = true, name = "Full HD TV", widthDp = 1920, heightDp = 1080)
-//@Composable
-//fun FullHdTvPreview_SelectBrand() {
-//    BackgroundImage()
-//    SelectBrandListScreen(brands = brandNameList)
-//}
+@Composable
+fun NormalPhonePreview_SelectBrand() {
+    BackgroundImage()
+    SelectBrandListScreen(brands = brandNameList)
+}

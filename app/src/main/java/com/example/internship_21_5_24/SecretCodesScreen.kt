@@ -118,45 +118,17 @@ fun SecretCodeListScreen(secretCodes: List<SecretCodes>) {
 }
 
 
+
+@Preview
 //@Preview(showBackground = true, name = "Small Phone", widthDp = 320, heightDp = 480)
-//@Composable
-//fun SmallPhone_SecretCodesPreview(){
-//    BackgroundImage()
-//    SecretCodeListScreen(secretCodes = secretCodesList)
-//}
-//
 //@Preview(showBackground = true, name = "Normal Phone", widthDp = 360, heightDp = 640)
-//@Composable
-//fun NormalPhone_SecretCodesPreview(){
-//    BackgroundImage()
-//    SecretCodeListScreen(secretCodes = secretCodesList)
-//}
-//
 //@Preview(showBackground = true, name = "Large Phone", widthDp = 400, heightDp = 800)
-//@Composable
-//fun LargePhone_SecretCodesPreview(){
-//    BackgroundImage()
-//    SecretCodeListScreen(secretCodes = secretCodesList)
-//}
 //@Preview(showBackground = true, name = "Extra Large Phone", widthDp = 480, heightDp = 853)
-//@Composable
-//fun ExtraLargePhone_SecretCodesPreview(){
-//    BackgroundImage()
-//    SecretCodeListScreen(secretCodes = secretCodesList)
-//}
-//
 //@Preview(showBackground = true, name = "Large Tablet", widthDp = 800, heightDp = 1280)
-//@Composable
-//fun LargeTablet_SecretCodesPreview(){
-//    BackgroundImage()
-//    SecretCodeListScreen(secretCodes = secretCodesList)
-//}
-//
-
-
 //@Preview(showBackground = true, name = "Full HD TV", widthDp = 1920, heightDp = 1080)
-//@Composable
-//fun Full_HD_TV_SecretCodesPreview(){
-//    BackgroundImage()
-//    SecretCodeListScreen(secretCodes = secretCodesList)
-//}
+//@Preview(showBackground = true, name = "Normal Phone", widthDp = 360, heightDp = 640)
+@Composable
+fun SecretCodesPreview(){
+    BackgroundImage()
+    SecretCodeListScreen(secretCodes = secretCodesList)
+}
