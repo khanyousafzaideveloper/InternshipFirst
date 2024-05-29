@@ -2,6 +2,7 @@ package com.example.internship_21_5_24
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit){
     Column {
         Text(
             text = "Free IMEI Checker & iCloud Bypass",
@@ -84,6 +85,7 @@ fun HomeScreen(){
                         .padding(8.dp)
                         .height(180.dp)
                         .clip(RoundedCornerShape(10.dp))
+                        .clickable { onClick1() }
                         .background(color = Color(0xFF2BB2AC))
                 ) {
                     Column( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -252,6 +254,7 @@ fun HomeScreen(){
                         .padding(8.dp)
                         .width(150.dp)
                         .height(160.dp)
+                        .clickable { onClick2() }
                         .clip(RoundedCornerShape(10.dp))
                         .background(color = Color(0xFFED776D))
                 ) {
@@ -302,10 +305,10 @@ fun HomeScreen(){
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp)
-                        // .padding(top = 4.dp)
                         .width(150.dp)
                         .height(180.dp)
                         .clip(RoundedCornerShape(10.dp))
+                        .clickable { onClick3() }
                         .background(color = Color(0xFFF6AC57))
                 ) {
                     Column ( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
@@ -419,6 +422,6 @@ fun HomeScreen(){
 @Composable
 fun Previews(){
     BackgroundImage()
-    HomeScreen()
+    HomeScreen(onClick1 = {}, onClick2 = {}, onClick3 = {})
 }
 

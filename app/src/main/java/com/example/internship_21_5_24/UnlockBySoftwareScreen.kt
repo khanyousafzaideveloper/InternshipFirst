@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun UnlockBySoftware(cards: List<UnlockTechniquesData>) {
     LazyColumn() {
         items(cards) { card ->
-            UnlockTechniquesCard(card = card)
+            UnlockTechniquesCard(card = card, onClick = {})
         }
     }
 }

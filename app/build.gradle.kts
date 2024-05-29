@@ -60,7 +60,10 @@ dependencies {
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
-   // implementation(libs.androidx.foundation.desktop)
+    implementation(libs.androidx.navigation.compose)
+
+
+    // implementation(libs.androidx.foundation.desktop)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

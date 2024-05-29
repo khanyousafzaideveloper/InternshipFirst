@@ -3,6 +3,7 @@ package com.example.internship_21_5_24
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,7 +31,7 @@ import androidx.compose.ui.unit.sp
 //@Preview
 @SuppressLint("SuspiciousIndentation")
 @Composable
-fun UnlockTechniquesCard(card: UnlockTechniquesData) {
+fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesData) -> Unit) {
     val fontRaleway = FontFamily(
         Font(R.font.raleway_bold, FontWeight.Normal)
     )
@@ -39,10 +40,9 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData) {
     )
         Box(modifier= Modifier
             .padding(start = 20.dp, top = 16.dp, end = 20.dp)
-            //.width(320.dp)
-            //.height(76.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
+            .clickable { onClick(card) }
             .background(color = Color(0xFFFFFFFF))
 
         ) {
@@ -60,8 +60,7 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData) {
                     Text(
                         text = card.title,
                         modifier = Modifier
-                            .padding(top = 4.dp, start = 8.dp)
-                            .width(206.dp),
+                            .padding(top = 4.dp, start = 8.dp),
                         fontWeight = FontWeight(800),
                         fontFamily = fontRaleway,
                         fontSize = 14.sp,
@@ -88,13 +87,11 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData) {
 
 
 @Composable
-fun UnlockTechListScreen(cards: List<UnlockTechniquesData>) {
+fun UnlockTechListScreen(cards: List<UnlockTechniquesData>, onClick: (UnlockTechniquesData) -> Unit) {
     LazyColumn(
-       // contentPadding = PaddingValues(0.dp),
-       // verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(cards) { card ->
-            UnlockTechniquesCard(card = card)
+            UnlockTechniquesCard(card = card, onClick = onClick)
         }
     }
 }
@@ -110,5 +107,5 @@ fun UnlockTechListScreen(cards: List<UnlockTechniquesData>) {
 @Composable
 fun UnlockTechniquesPreview() {
     BackgroundImage()
-    UnlockTechListScreen(UnlockTechDataList)
+    UnlockTechListScreen(UnlockTechDataList, onClick = {})
 }

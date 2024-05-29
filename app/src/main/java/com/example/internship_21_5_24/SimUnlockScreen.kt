@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun SimUnlockScreen(cards: List<UnlockTechniquesData>) {
     LazyColumn() {
         items(cards) { card ->
-            UnlockTechniquesCard(card = card)
+            UnlockTechniquesCard(card = card, onClick = {})
         }
     }
 }
@@ -25,6 +25,6 @@ fun SimUnlockScreen(cards: List<UnlockTechniquesData>) {
 @Composable
 fun SmallPhonePreview_UnlockTech() {
     BackgroundImage()
-    UnlockTechListScreen(cards = SimUnlockList)
+    SimUnlockScreen(cards = SimUnlockList)
 }
 

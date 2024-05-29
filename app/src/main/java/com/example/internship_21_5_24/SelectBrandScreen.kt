@@ -27,12 +27,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SelectBrandScreen(brand: BrandNames){
+fun SelectBrandScreen(brand: BrandNames, onClick: () -> Unit){
     Box(modifier= Modifier
         .padding(start = 20.dp, top = 16.dp, end = 20.dp)
         .fillMaxWidth()
         .clip(RoundedCornerShape(8.dp))
-        .clickable {  }
+        .clickable { onClick() }
         .background(color = Color(0xFFFFFFFF)),
     ) {
         Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
@@ -43,7 +43,6 @@ fun SelectBrandScreen(brand: BrandNames){
                     .padding(start = 8.dp, top = 8.dp, bottom = 8.dp)
                     .width(54.dp)
                     .height(50.48.dp)
-
             )
            // Box(modifier= Modifier.fillMaxWidth() .align(Alignment.CenterVertically)) {
                 Text(
@@ -67,13 +66,13 @@ fun SelectBrandScreen(brand: BrandNames){
 }
 
 @Composable
-fun SelectBrandListScreen(brands: List<BrandNames>) {
+fun SelectBrandListScreen(brands: List<BrandNames>, onClick:() -> Unit) {
     LazyColumn(
         // contentPadding = PaddingValues(0.dp),
         // verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(brands) { brand ->
-            SelectBrandScreen(brand)
+            SelectBrandScreen(brand, onClick)
         }
     }
 }
@@ -90,5 +89,5 @@ fun SelectBrandListScreen(brands: List<BrandNames>) {
 @Composable
 fun NormalPhonePreview_SelectBrand() {
     BackgroundImage()
-    SelectBrandListScreen(brands = brandNameList)
+    SelectBrandListScreen(brands = brandNameList, onClick ={})
 }
