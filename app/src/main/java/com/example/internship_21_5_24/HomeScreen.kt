@@ -1,5 +1,6 @@
 package com.example.internship_21_5_24
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -28,9 +30,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit){
+fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onClickIcloud: () -> Unit){
+    val viewModel: HomeViewModel = viewModel()
+    val context: Context = LocalContext.current
     Column {
         Text(
             text = "Free IMEI Checker & iCloud Bypass",
@@ -138,9 +143,9 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit){
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp)
-                        // .padding(top=8.dp)
                         .width(150.dp)
                         .height(180.dp)
+                        .clickable { onClickIcloud()}
                         .clip(RoundedCornerShape(10.dp))
                         .background(color = Color(0xFF6F7BF1))
                 ) {
@@ -190,12 +195,12 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit){
                 }
                 Box(
                     modifier = Modifier
-                        //.padding(top=8.dp)
                         .fillMaxWidth()
                         .padding(8.dp)
                         .width(150.dp)
                         .height(160.dp)
                         .clip(RoundedCornerShape(10.dp))
+                        .clickable { viewModel.moreApps(context) }
                         .background(color = Color(0xFF00A06A))
                 ) {
                     Column( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -358,7 +363,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit){
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(8.dp)
-                        //.padding(top=4.dp)
+                        .clickable { viewModel.shareApp(context) }
                         .width(150.dp)
                         .height(180.dp)
                         .clip(RoundedCornerShape(10.dp))
@@ -422,6 +427,6 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit){
 @Composable
 fun Previews(){
     BackgroundImage()
-    HomeScreen(onClick1 = {}, onClick2 = {}, onClick3 = {})
+    HomeScreen(onClick1 = {}, onClick2 = {}, onClick3 = {}, onClickIcloud = {})
 }
 

@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SecretCodeCard(secretCodes: SecretCodes){
+fun SecretCodeCard(secretCodes: SecretCodes ){
     Box(modifier= Modifier
         .padding(start = 20.dp, top = 16.dp, end = 20.dp)
         .fillMaxWidth()
@@ -108,8 +108,6 @@ fun SecretCodeCard(secretCodes: SecretCodes){
 @Composable
 fun SecretCodeListScreen(secretCodes: List<SecretCodes>) {
     LazyColumn(
-        // contentPadding = PaddingValues(0.dp),
-        // verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(secretCodes) { secret ->
             SecretCodeCard(secret)
@@ -130,5 +128,5 @@ fun SecretCodeListScreen(secretCodes: List<SecretCodes>) {
 @Composable
 fun SecretCodesPreview(){
     BackgroundImage()
-    SecretCodeListScreen(secretCodes = secretCodesList)
+    SecretCodeListScreen(secretCodes = secretCodesList_Samsung)
 }

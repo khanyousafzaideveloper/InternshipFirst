@@ -64,7 +64,7 @@ data class SecretCodes(
     val number: String
 )
 
-val secretCodesList= listOf(
+val secretCodesList_Samsung= listOf(
     SecretCodes("Display IMEI Number","*#06#"),
     SecretCodes("General Test Mode","*#0*#"),
     SecretCodes("Software & WH Info","*#12580*369#"),
@@ -73,3 +73,5 @@ val secretCodesList= listOf(
     SecretCodes("Data Create Menu","*#273283*255*3282*#"),
     SecretCodes("Software Version Info","*#44336#"),
     )
+
+

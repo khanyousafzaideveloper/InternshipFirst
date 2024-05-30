@@ -27,12 +27,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SelectBrandScreen(brand: BrandNames, onClick: () -> Unit){
+fun SelectBrandScreen(brand: BrandNames, onClick: (BrandNames) -> Unit){
     Box(modifier= Modifier
         .padding(start = 20.dp, top = 16.dp, end = 20.dp)
         .fillMaxWidth()
         .clip(RoundedCornerShape(8.dp))
-        .clickable { onClick() }
+        .clickable { onClick(brand) }
         .background(color = Color(0xFFFFFFFF)),
     ) {
         Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
@@ -66,13 +66,13 @@ fun SelectBrandScreen(brand: BrandNames, onClick: () -> Unit){
 }
 
 @Composable
-fun SelectBrandListScreen(brands: List<BrandNames>, onClick:() -> Unit) {
+fun SelectBrandListScreen(brands: List<BrandNames>, onClick:(BrandNames) -> Unit) {
     LazyColumn(
         // contentPadding = PaddingValues(0.dp),
         // verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(brands) { brand ->
-            SelectBrandScreen(brand, onClick)
+            SelectBrandScreen(brand, onClick=onClick)
         }
     }
 }

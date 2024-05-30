@@ -1,5 +1,7 @@
 package com.example.internship_21_5_24
 
+import android.content.Context
+import android.provider.ContactsContract.CommonDataKinds.Email
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,11 +25,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,6 +40,8 @@ fun SimUnlockForm() {
     var txtF2 by remember { mutableStateOf("") }
     var txtF3 by remember { mutableStateOf("") }
     var txtF4 by remember { mutableStateOf("") }
+    val context: Context = LocalContext.current
+    val viewModel:HomeViewModel = viewModel()
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -137,7 +143,7 @@ fun SimUnlockForm() {
                     )
             )
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { viewModel.shareIMEI(context, txtF1, txtF2, txtF3, txtF4) },
                 shape = RectangleShape,
                 modifier = Modifier
                     .padding(top = 16.dp)

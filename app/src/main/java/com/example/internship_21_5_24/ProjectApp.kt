@@ -29,7 +29,8 @@ fun ProjectApp(
             HomeScreen(
                onClick1 = { navigateTo(navController, ProjectScreens.UnlockTechniques) },
                onClick2 = { navigateTo(navController, ProjectScreens.SelectBrand) },
-               onClick3 = { navigateTo(navController, ProjectScreens.SimUnlockForm) }
+               onClick3 = { navigateTo(navController, ProjectScreens.SimUnlockForm) },
+               onClickIcloud = { navigateTo(navController, ProjectScreens.IcloudWebPage) }
             )
          }
          composable(route=ProjectScreens.UnlockTechniques.name){
@@ -51,10 +52,14 @@ fun ProjectApp(
             SimUnlockScreen(cards = SimUnlockList)
          }
          composable(route=ProjectScreens.SelectBrand.name){
-            SelectBrandListScreen(brands = brandNameList, onClick = { navigateTo(navController,ProjectScreens.SecretCodes) })
+            SelectBrandListScreen(
+               brands = brandNameList,
+               onClick = { navigateTo(navController,ProjectScreens.SecretCodes)
+               }
+            )
          }
          composable(route=ProjectScreens.SecretCodes.name){
-            SecretCodeListScreen(secretCodes = secretCodesList)
+            SecretCodeListScreen(secretCodes = secretCodesList_Samsung)
          }
          composable(route=ProjectScreens.SimUnlockForm.name){
             SimUnlockForm()
@@ -64,6 +69,9 @@ fun ProjectApp(
          }
          composable(route=ProjectScreens.UnlockNetworkOfYourPhone.name){
             UnlockWithTricksScreen(cards = UnlockNetworkOfYourPhoneList)
+         }
+         composable(route=ProjectScreens.IcloudWebPage.name){
+            WebPage_Icloud()
          }
       }
    }
@@ -82,5 +90,6 @@ enum class ProjectScreens() {
    SelectBrand,
    SecretCodes,
    UnlockWithTricks,
-   UnlockNetworkOfYourPhone
+   UnlockNetworkOfYourPhone,
+   IcloudWebPage
 }
