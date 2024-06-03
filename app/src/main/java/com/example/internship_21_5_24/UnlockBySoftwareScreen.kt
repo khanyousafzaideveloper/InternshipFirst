@@ -4,12 +4,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 
 @Composable
-fun UnlockBySoftware(cards: List<UnlockTechniquesData>) {
+fun UnlockBySoftware(cards: List<UnlockTechniquesData>, onClick:(UnlockTechniquesData)->Unit) {
+
     LazyColumn() {
         items(cards) { card ->
-            UnlockTechniquesCard(card = card, onClick = {})
+            UnlockTechniquesCard(card = card, onClick = onClick)
         }
     }
 }
@@ -22,8 +24,8 @@ fun UnlockBySoftware(cards: List<UnlockTechniquesData>) {
 //@Preview(showBackground = true, name = "Large Tablet", widthDp = 800, heightDp = 1280)
 //@Preview(showBackground = true, name = "Full HD TV", widthDp = 1920, heightDp = 1080)
 @Composable
-fun Preview2(){
+fun Preview2() {
     BackgroundImage()
     val items = UnlockBySoftwareList
-    UnlockBySoftware(cards = items)
+    UnlockBySoftware(cards = items, onClick = {})
 }

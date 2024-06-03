@@ -42,7 +42,9 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesD
             .padding(start = 20.dp, top = 16.dp, end = 20.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
-            .clickable { onClick(card) }
+            .clickable {
+                onClick(card)
+            }
             .background(color = Color(0xFFFFFFFF))
 
         ) {

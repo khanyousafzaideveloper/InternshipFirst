@@ -25,14 +25,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun SelectBrandScreen(brand: BrandNames, onClick: (BrandNames) -> Unit){
+fun SelectBrandScreen(brand: brandNamesEnum, navController: NavController){
     Box(modifier= Modifier
         .padding(start = 20.dp, top = 16.dp, end = 20.dp)
         .fillMaxWidth()
         .clip(RoundedCornerShape(8.dp))
-        .clickable { onClick(brand) }
+        .clickable { navController.navigate("brand/${brand.name}") }
         .background(color = Color(0xFFFFFFFF)),
     ) {
         Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
@@ -66,13 +69,13 @@ fun SelectBrandScreen(brand: BrandNames, onClick: (BrandNames) -> Unit){
 }
 
 @Composable
-fun SelectBrandListScreen(brands: List<BrandNames>, onClick:(BrandNames) -> Unit) {
+fun SelectBrandListScreen(brands: List<brandNamesEnum>, navController: NavController) {
     LazyColumn(
         // contentPadding = PaddingValues(0.dp),
         // verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(brands) { brand ->
-            SelectBrandScreen(brand, onClick=onClick)
+            SelectBrandScreen(brand, navController)
         }
     }
 }
@@ -89,5 +92,9 @@ fun SelectBrandListScreen(brands: List<BrandNames>, onClick:(BrandNames) -> Unit
 @Composable
 fun NormalPhonePreview_SelectBrand() {
     BackgroundImage()
-    SelectBrandListScreen(brands = brandNameList, onClick ={})
+    SelectBrandListScreen(brands = brandNamesEnum.values().toList(), navController =FakeNavController())
+}
+@Composable
+fun FakeNavController(): NavHostController {
+    return rememberNavController() // This can be a simple rememberNavController for preview purposes
 }

@@ -1,7 +1,7 @@
 package com.example.internship_21_5_24
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.provider.ContactsContract.CommonDataKinds.Email
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,7 +12,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -33,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
+@SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SimUnlockForm() {
@@ -41,7 +41,7 @@ fun SimUnlockForm() {
     var txtF3 by remember { mutableStateOf("") }
     var txtF4 by remember { mutableStateOf("") }
     val context: Context = LocalContext.current
-    val viewModel:HomeViewModel = viewModel()
+    val viewModel: HomeViewModel = viewModel()
         Column(
             modifier = Modifier
                 .fillMaxSize()

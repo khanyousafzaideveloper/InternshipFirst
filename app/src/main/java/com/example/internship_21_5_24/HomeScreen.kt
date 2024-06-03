@@ -51,7 +51,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
         Text(
             text = "Welcome",
             modifier = Modifier
-                .padding(28.dp)
+                .padding(top=28.dp, start = 28.dp, bottom = 8.dp)
                 .width(111.dp),
             color = Color(0xFFFFFFFF),
             fontWeight = FontWeight(700),
@@ -82,12 +82,13 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight()
-                    .padding(start = 8.dp, end = 8.dp)
+                    .padding(start = 4.dp, end = 4.dp)
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp)
+                        .padding(4.dp)
+                        .padding(bottom= 4.dp)
                         .height(180.dp)
                         .clip(RoundedCornerShape(10.dp))
                         .clickable { onClick1() }
@@ -142,7 +143,8 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp)
+                        .padding(4.dp)
+                        .padding(bottom= 4.dp)
                         .width(150.dp)
                         .height(180.dp)
                         .clickable { onClickIcloud()}
@@ -196,7 +198,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp)
+                        .padding(4.dp)
                         .width(150.dp)
                         .height(160.dp)
                         .clip(RoundedCornerShape(10.dp))
@@ -251,12 +253,13 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxHeight()
-                    .padding(start = 8.dp, end = 8.dp)
+                    .padding(start = 4.dp, end = 4.dp)
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp)
+                        .padding(4.dp)
+                        .padding(bottom= 4.dp)
                         .width(150.dp)
                         .height(160.dp)
                         .clickable { onClick2() }
@@ -309,7 +312,8 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp)
+                        .padding(4.dp)
+                        .padding(bottom= 4.dp)
                         .width(150.dp)
                         .height(180.dp)
                         .clip(RoundedCornerShape(10.dp))
@@ -362,7 +366,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(8.dp)
+                        .padding(4.dp)
                         .clickable { viewModel.shareApp(context) }
                         .width(150.dp)
                         .height(180.dp)

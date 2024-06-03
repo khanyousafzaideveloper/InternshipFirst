@@ -17,6 +17,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -74,7 +75,7 @@ fun SecretCodeCard(secretCodes: SecretCodes ){
                             .height(18.dp)
                             .width(18.dp)
                             .clip(RoundedCornerShape(4.dp))
-                            .clickable {  }
+                            .clickable { }
                     )
 
                     Image(
@@ -86,7 +87,7 @@ fun SecretCodeCard(secretCodes: SecretCodes ){
                             .height(18.dp)
                             .width(18.dp)
                             .clip(RoundedCornerShape(4.dp))
-                            .clickable {  }
+                            .clickable { }
                     )
 
                     Image(
@@ -98,7 +99,7 @@ fun SecretCodeCard(secretCodes: SecretCodes ){
                             .height(18.dp)
                             .width(18.dp)
                             .clip(RoundedCornerShape(4.dp))
-                            .clickable {  }
+                            .clickable { }
                     )
 
                 }
@@ -106,11 +107,50 @@ fun SecretCodeCard(secretCodes: SecretCodes ){
     }
 }
 @Composable
-fun SecretCodeListScreen(secretCodes: List<SecretCodes>) {
+fun SecretCodeListScreen( selectedBrand: String) {
+
+    val secretCodes = remember {
+        when (selectedBrand) {
+            brandNamesEnum.SAMSUNG.toString() -> secretCodesList_Samsung
+            brandNamesEnum.RealMe.toString() -> secretCodes_realme
+            brandNamesEnum.HTC.toString() -> secretCodesList_HTC
+            brandNamesEnum.LENOVO.toString() -> secretCodesList_Lenovo
+            brandNamesEnum.SONY.toString() -> secretCodesList_sony
+            brandNamesEnum.INFINIX.toString() -> secretCodesList_infinix
+            brandNamesEnum.MOTOROLA.toString() -> secretCodesList_motorola
+            brandNamesEnum.BLACKBERRY.toString() -> secretCodesList_blackberry
+            brandNamesEnum.LG.toString() -> secretCodesList_lg
+            brandNamesEnum.XIAOMI.toString() -> secretCodesList_xiaomi
+            brandNamesEnum.OPPO.toString() -> secretCodes_oppo
+            brandNamesEnum.QMOBILE.toString()-> secretCodesList_qmobile
+            brandNamesEnum.CHINA.toString()-> secretCodesList_china
+            brandNamesEnum.GENERIC.toString()-> secretCodesList_Generic
+            brandNamesEnum.MICROSOFT_WINDOW.toString()-> secretCodesList_microsoft_windows
+            brandNamesEnum.VIVO.toString()-> secretCodesList_vivo
+            brandNamesEnum.ACER.toString()-> secretCodesList_acer
+            brandNamesEnum.NOKIA.toString()-> secretCodesList_nokia
+            brandNamesEnum.Tecno.toString()-> secretCodeList_techno
+            brandNamesEnum.ASUS.toString()-> secretCodesList_asus
+            brandNamesEnum.Honor.toString()-> secretCodesList_honor
+            brandNamesEnum.HUAWEI.toString() -> secretCodesList_Huawei
+            brandNamesEnum.IPHONE.toString()-> secretCodesList_iphone
+            brandNamesEnum.ZTE.toString()-> secretCodes_zte
+            brandNamesEnum.One_Plus.toString()-> secretCodes_oneplus
+            brandNamesEnum.Plam.toString()-> secretCodesList_plam
+            brandNamesEnum.AMOL.toString()-> secretCodes_amol
+            brandNamesEnum.BQ.toString()-> secretCodesList_bq
+            brandNamesEnum.I_Mobile.toString()-> secretCodes_imobile
+            brandNamesEnum.LEECO.toString()-> secretCodesList_leeco
+
+            else -> emptyList()
+        }
+    }
     LazyColumn(
     ) {
         items(secretCodes) { secret ->
-            SecretCodeCard(secret)
+            if (secret != null) {
+                SecretCodeCard(secret)
+            }
         }
     }
 }
@@ -128,5 +168,5 @@ fun SecretCodeListScreen(secretCodes: List<SecretCodes>) {
 @Composable
 fun SecretCodesPreview(){
     BackgroundImage()
-    SecretCodeListScreen(secretCodes = secretCodesList_Samsung)
+    SecretCodeListScreen(selectedBrand = "SAMSUNG")
 }

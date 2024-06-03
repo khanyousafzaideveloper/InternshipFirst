@@ -46,21 +46,36 @@ fun ProjectApp(
             )
          }
          composable(route=ProjectScreens.UnlockBySoftware.name){
-            UnlockBySoftware(cards = UnlockBySoftwareList)
+            UnlockBySoftware(
+               cards = UnlockBySoftwareList, onClick = {
+                  card ->
+                  when(card.id){
+                     1 -> navigateTo(navController, ProjectScreens.AssetScreen)
+                  }
+               }
+            )
          }
          composable(route=ProjectScreens.SimUnlock.name){
             SimUnlockScreen(cards = SimUnlockList)
          }
          composable(route=ProjectScreens.SelectBrand.name){
             SelectBrandListScreen(
-               brands = brandNameList,
-               onClick = { navigateTo(navController,ProjectScreens.SecretCodes)
-               }
+               brands = brandNamesEnum.values().toList(),
+               navController = navController
             )
          }
-         composable(route=ProjectScreens.SecretCodes.name){
-            SecretCodeListScreen(secretCodes = secretCodesList_Samsung)
+         composable(route="brand/{codes}"){backStackEntry ->
+            val codes =  backStackEntry.arguments?.getString("codes")
+            if (codes != null) {
+               SecretCodeListScreen(selectedBrand = codes)
+            }
          }
+//         composable(route="UnlockBySoftware{cardes}"){backStackEntry ->
+//            val cards =  backStackEntry.arguments?.getString("cards")
+//            if (cards != null) {
+//               Assets(cards)
+//            }
+//         }
          composable(route=ProjectScreens.SimUnlockForm.name){
             SimUnlockForm()
          }
@@ -72,6 +87,9 @@ fun ProjectApp(
          }
          composable(route=ProjectScreens.IcloudWebPage.name){
             WebPage_Icloud()
+         }
+         composable(route = ProjectScreens.AssetScreen.name){
+            Assets()
          }
       }
    }
@@ -91,5 +109,6 @@ enum class ProjectScreens() {
    SecretCodes,
    UnlockWithTricks,
    UnlockNetworkOfYourPhone,
-   IcloudWebPage
+   IcloudWebPage,
+   AssetScreen
 }
