@@ -92,9 +92,9 @@ fun SelectBrandListScreen(brands: List<brandNamesEnum>, navController: NavContro
 @Composable
 fun NormalPhonePreview_SelectBrand() {
     BackgroundImage()
-    SelectBrandListScreen(brands = brandNamesEnum.values().toList(), navController =FakeNavController())
+    SelectBrandListScreen(brands = brandNamesEnum.values().toList(), navController =fakeNavController())
 }
 @Composable
-fun FakeNavController(): NavHostController {
+fun fakeNavController(): NavHostController {
     return rememberNavController() // This can be a simple rememberNavController for preview purposes
 }

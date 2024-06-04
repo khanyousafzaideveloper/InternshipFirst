@@ -1,15 +1,19 @@
 package com.example.internship_21_5_24
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 
+@SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProjectApp(
@@ -47,16 +51,11 @@ fun ProjectApp(
          }
          composable(route=ProjectScreens.UnlockBySoftware.name){
             UnlockBySoftware(
-               cards = UnlockBySoftwareList, onClick = {
-                  card ->
-                  when(card.id){
-                     1 -> navigateTo(navController, ProjectScreens.AssetScreen)
-                  }
-               }
+               cards = UnlockBySoftwareList, navController = navController
             )
          }
          composable(route=ProjectScreens.SimUnlock.name){
-            SimUnlockScreen(cards = SimUnlockList)
+            SimUnlockScreen(cards = SimUnlockList, navController)
          }
          composable(route=ProjectScreens.SelectBrand.name){
             SelectBrandListScreen(
@@ -70,26 +69,49 @@ fun ProjectApp(
                SecretCodeListScreen(selectedBrand = codes)
             }
          }
-//         composable(route="UnlockBySoftware{cardes}"){backStackEntry ->
-//            val cards =  backStackEntry.arguments?.getString("cards")
-//            if (cards != null) {
-//               Assets(cards)
-//            }
-//         }
+         composable(
+            route="UnlockBySoftware/{cardId}",
+            arguments = listOf(navArgument("cardId") { type = NavType.IntType })
+         ){ backStackEntry ->
+            val cards =  backStackEntry.arguments?.getInt("cardId") ?: 0
+               Assets(cards)
+         }
+
+         composable(
+            route="UnlockByTricks/{cardId}",
+            arguments = listOf(navArgument("cardId") { type = NavType.IntType })
+         ){ backStackEntry ->
+            val cards =  backStackEntry.arguments?.getInt("cardId") ?: 0
+            AssetsUnlockByTricks(cards)
+         }
+
+         composable(
+            route="SimUnlock/{cardId}",
+            arguments = listOf(navArgument("cardId") { type = NavType.IntType })
+         ){ backStackEntry ->
+            val cards =  backStackEntry.arguments?.getInt("cardId") ?: 0
+            Assets3(cards)
+         }
+
+         composable(
+            route="UnlockNetworkPhone/{cardId}",
+            arguments = listOf(navArgument("cardId") { type = NavType.IntType })
+         ){ backStackEntry ->
+            val cards =  backStackEntry.arguments?.getInt("cardId") ?: 0
+            Assets4(cards)
+         }
+
          composable(route=ProjectScreens.SimUnlockForm.name){
             SimUnlockForm()
          }
          composable(route=ProjectScreens.UnlockWithTricks.name){
-            UnlockWithTricksScreen(cards = UnlockWithTricksList)
+            UnlockWithTricksScreen(cards = UnlockWithTricksList, navController)
          }
          composable(route=ProjectScreens.UnlockNetworkOfYourPhone.name){
-            UnlockWithTricksScreen(cards = UnlockNetworkOfYourPhoneList)
+            UnlockWithTricksScreen(cards = UnlockNetworkOfYourPhoneList, navController)
          }
          composable(route=ProjectScreens.IcloudWebPage.name){
             WebPage_Icloud()
-         }
-         composable(route = ProjectScreens.AssetScreen.name){
-            Assets()
          }
       }
    }
@@ -106,7 +128,6 @@ enum class ProjectScreens() {
    SimUnlock,
    SimUnlockForm,
    SelectBrand,
-   SecretCodes,
    UnlockWithTricks,
    UnlockNetworkOfYourPhone,
    IcloudWebPage,
