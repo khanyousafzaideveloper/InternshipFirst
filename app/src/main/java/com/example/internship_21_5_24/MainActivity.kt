@@ -66,7 +66,7 @@ fun MyApp(){
 fun BackgroundImage(){
     Box(modifier = Modifier.fillMaxSize() ) {
         Image(
-            painter = painterResource(id = R.drawable.home_8),
+            painter = painterResource(id = R.drawable.rectangle_1),
             contentDescription = "null",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop

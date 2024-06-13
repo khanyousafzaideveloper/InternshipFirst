@@ -1,5 +1,6 @@
 package com.example.internship_21_5_24
 
+import android.app.Activity
 import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -8,16 +9,17 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,11 +38,13 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
+import kotlinx.coroutines.delay
 
 @Composable
 fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onClickIcloud: () -> Unit){
     val viewModel: HomeViewModel = viewModel()
     val context: Context = LocalContext.current
+    val activity = context as? Activity
     Column(modifier=Modifier.fillMaxSize()) {
         Text(
             text = "Free IMEI Checker & iCloud Bypass",
@@ -53,6 +57,18 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
             fontSize = 17.sp,
             textAlign = TextAlign.Center
         )
+        LaunchedEffect(Unit) {
+            activity?.let {
+                loadAndShowInterstitialAd(it)
+                delay(6800)
+            }
+        }
+//        Button(onClick = {
+//            activity?.let { loadAndShowInterstitialAd(it) }
+//            }
+//        ) {
+//            Text("Show add")
+//        }
         Text(
             text = "Welcome",
             modifier = Modifier
@@ -86,7 +102,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
             Column(
                 modifier = Modifier
                     .weight(1f)
-                  //  .fillMaxHeight()
+                    //  .fillMaxHeight()
                     .padding(start = 4.dp, end = 4.dp)
             ) {
                 Box(
@@ -101,7 +117,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 ) {
                     Column( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                         Image(
-                            painter = painterResource(id = R.drawable.group_503),
+                            painter = painterResource(id = R.drawable.unlock_technique_icon),
                             contentDescription = null,
                             modifier = Modifier
                                 //  .padding(top = 187.dp - 174.dp, start = 66.dp - 20.dp)
@@ -116,7 +132,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                                 text = "Unlock Technique",
                                 modifier = Modifier
                                     .padding(4.dp)
-                                    .width(129.dp)
+                                    //.width(129.dp)
                                     //  .height(15.dp)
                                     .align(Alignment.CenterHorizontally),
                                 style = TextStyle(
@@ -130,9 +146,9 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                             Text(
                                 text = "Unlock the Lock of your Mobile Device",
                                 modifier = Modifier
-                                    .padding(8.dp)
-                                    .width(126.dp)
-                                    .height(32.dp),
+                                    .padding(8.dp),
+                                    //.width(126.dp)
+                                    //.height(32.dp),
                                 style = TextStyle(
                                     fontWeight = FontWeight(400),
                                     fontSize = 12.sp,
@@ -158,7 +174,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 ) {
                     Column( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                         Image(
-                            painter = painterResource(id = R.drawable.group_502),
+                            painter = painterResource(id = R.drawable.unlock_icloud_icon_1_),
                             contentDescription = null,
                             modifier = Modifier
                                 // .padding(top = 187.dp - 174.dp, start = 66.dp - 20.dp)
@@ -171,9 +187,9 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text(
                                 text = "Unlock iCloud",
-                                modifier = Modifier
+                                modifier = Modifier,
                                     //  .padding(top = 275.dp - 174.dp, start = 31.dp - 20.dp)
-                                    .width(129.dp),
+                                    //.width(129.dp),
                                 style = TextStyle(
                                     fontWeight = FontWeight(700),
                                     fontSize = 15.sp,
@@ -185,9 +201,9 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                             Text(
                                 text = "Unlock the Locks your Mobile Device",
                                 modifier = Modifier
-                                    .padding(8.dp)
-                                    .width(126.dp)
-                                    .height(32.dp),
+                                    .padding(8.dp),
+                                   // .width(126.dp)
+                                    //.height(32.dp),
                                 style = TextStyle(
                                     fontWeight = FontWeight(400),
                                     fontSize = 12.sp,
@@ -238,9 +254,9 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                             Text(
                                 text = "Check our more useful application for free",
                                 modifier = Modifier
-                                    .padding(8.dp)
-                                    .width(126.dp)
-                                    .height(32.dp),
+                                    .padding(8.dp),
+                                    //.width(126.dp)
+                                    //.height(32.dp),
                                 style = TextStyle(
                                     fontWeight = FontWeight(400),
                                     fontSize = 12.sp,
@@ -257,7 +273,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
             Column(
                 modifier = Modifier
                     .weight(1f)
-                  //  .fillMaxHeight()
+                    //  .fillMaxHeight()
                     .padding(start = 4.dp, end = 4.dp)
             ) {
                 Box(
@@ -273,13 +289,13 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 ) {
                     Column( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                         Image(
-                            painter = painterResource(id = R.drawable.group11),
+                            painter = painterResource(id = R.drawable.secret_code_icon),
                             contentDescription = null,
                             modifier = Modifier
                                 .padding(top = 16.dp)
                                 .align(Alignment.CenterHorizontally)
-                                .width(58.96.dp)
-                                .height(59.52.dp)
+                                //.width(58.96.dp)
+                                //.height(59.52.dp)
                         )
                         Spacer(modifier = Modifier.padding(8.dp))
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -327,7 +343,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 ) {
                     Column ( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
                         Image(
-                            painter = painterResource(id = R.drawable.group),
+                            painter = painterResource(id = R.drawable.ulock_imei_icon),
                             contentDescription = null,
                             modifier = Modifier
                                 .padding(top = 16.dp)
@@ -339,9 +355,9 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text(
                                 text = "Unlock IMEI",
-                                modifier = Modifier
+                                modifier = Modifier,
                                     //  .padding(top = 275.dp - 174.dp, start = 31.dp - 20.dp)
-                                    .width(129.dp),
+                                   // .width(129.dp),
                                 style = TextStyle(
                                     fontWeight = FontWeight(700),
                                     fontSize = 15.sp,
@@ -353,9 +369,9 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                             Text(
                                 text = "Get your IMEI Inspection for Free",
                                 modifier = Modifier
-                                    .padding(8.dp)
-                                    .width(126.dp)
-                                    .height(32.dp),
+                                    .padding(8.dp),
+                                   // .width(126.dp)
+                                   // .height(32.dp),
                                 style = TextStyle(
                                     fontWeight = FontWeight(400),
                                     fontSize = 12.sp,
@@ -392,9 +408,9 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text(
                                 text = "Share App",
-                                modifier = Modifier
+                                modifier = Modifier,
                                     //  .padding(top = 275.dp - 174.dp, start = 31.dp - 20.dp)
-                                    .width(129.dp),
+                                    //.width(129.dp),
                                 style = TextStyle(
                                     fontWeight = FontWeight(700),
                                     fontSize = 15.sp,
@@ -406,9 +422,9 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                             Text(
                                 text = "Share our app with your friends and Family",
                                 modifier = Modifier
-                                    .padding(8.dp)
-                                    .width(126.dp)
-                                    .height(32.dp),
+                                    .padding(8.dp),
+                                    //.width(126.dp)
+                                    //.height(32.dp),
                                 style = TextStyle(
                                     fontWeight = FontWeight(400),
                                     fontSize = 12.sp,
@@ -423,7 +439,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 }
             }
         }
-        BannerAd(modifier = Modifier.fillMaxWidth(), adID ="ca-app-pub-3940256099942544/9214589741")
+    //   BannerAd(modifier = Modifier.fillMaxWidth(), adID ="ca-app-pub-3940256099942544/9214589741")
     }
 }
 
@@ -438,7 +454,7 @@ fun BannerAd(modifier:Modifier, adID: String){
         }
     }
 
-    AndroidView(factory = { adView },modifier.padding(bottom = 12.dp))
+    AndroidView(factory = { adView },modifier.padding(4.dp))
 }
 @Preview
 //@Preview(showBackground = true, name = "Small Phone", widthDp = 320, heightDp = 480)
