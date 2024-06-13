@@ -59,14 +59,7 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyApp(){
-
-   // HomeScreen(onClick = {})
     ProjectApp()
-    //UnlockTechListScreen(cards = UnlockTechDataList)
-    //  UnlockBySoftware(cards = UnlockBySoftwareList)
-    //  SimUnlockScreen(cards = SimUnlockList)
-    //  SimUnlockForm()
-    //  SecretCodeListScreen(secretCodes = secretCodesList)
 }
 
 @Composable

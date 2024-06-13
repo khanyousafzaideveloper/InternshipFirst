@@ -34,20 +34,20 @@ val SimUnlockList = listOf(
 
 val UnlockWithTricksList = listOf(
     UnlockTechniquesData("Unlock a Verizon Phone", "In this information you will learn how to unlock the lock of mobile device.",1),
-    UnlockTechniquesData("Unlock Kitkat and Early Version", "In this information you will learn how to unlock the lock of mobile device.",1),
-    UnlockTechniquesData("Boot into a Safe Mode to bypass Third-Party Lock Screen", "In this information you will learn how to unlock the lock of mobile device.",2),
-    UnlockTechniquesData("Crash the Lock Screen UI", "In this information you will learn how to unlock the lock of mobile device.",3),
-    UnlockTechniquesData("Factory Reset", "In this information you will learn how to unlock the lock of mobile device.",4),
-    UnlockTechniquesData("Use ADB to Delete the Password File","In this information you will learn how to unlock the lock of mobile device.",5),
-    UnlockTechniquesData("Use Google's Find My Device Website","In this information you will learn how to unlock the lock of mobile device.",6),
-    UnlockTechniquesData("Use Samsung's Find My Mobile Service","In this information you will learn how to unlock the lock of mobile device.",7),
-    UnlockTechniquesData("Use Forgot pattern Feature","In this information you will learn how to unlock the lock of mobile device.",8),
-    UnlockTechniquesData("How to unlock an EE phone","In this information you will learn how to unlock the lock of mobile device.",9),
-    UnlockTechniquesData("Unlock your wireless Device","In this information you will learn how to unlock the lock of mobile device.",10),
-    UnlockTechniquesData("Use Button Commands To Reset Your Phone","In this information you will learn how to unlock the lock of mobile device.",11),
-    UnlockTechniquesData("How to unlock Virgin Media Phone","In this information you will learn how to unlock the lock of mobile device.",12),
-    UnlockTechniquesData("Remove Screen/PIN Password without Losing any data","In this information you will learn how to unlock the lock of mobile device.",13),
-    UnlockTechniquesData("Methods to unlock Android without gmail account","In this information you will learn how to unlock the lock of mobile device.",14),
+    UnlockTechniquesData("Unlock Kitkat and Early Version", "In this information you will learn how to unlock the lock of mobile device.",2),
+    UnlockTechniquesData("Boot into a Safe Mode to bypass Third-Party Lock Screen", "In this information you will learn how to unlock the lock of mobile device.",3),
+    UnlockTechniquesData("Crash the Lock Screen UI", "In this information you will learn how to unlock the lock of mobile device.",4),
+    UnlockTechniquesData("Factory Reset", "In this information you will learn how to unlock the lock of mobile device.",5),
+    UnlockTechniquesData("Use ADB to Delete the Password File","In this information you will learn how to unlock the lock of mobile device.",6),
+    UnlockTechniquesData("Use Google's Find My Device Website","In this information you will learn how to unlock the lock of mobile device.",7),
+    UnlockTechniquesData("Use Samsung's Find My Mobile Service","In this information you will learn how to unlock the lock of mobile device.",8),
+    UnlockTechniquesData("Use Forgot pattern Feature","In this information you will learn how to unlock the lock of mobile device.",9),
+    UnlockTechniquesData("How to unlock an EE phone","In this information you will learn how to unlock the lock of mobile device.",10),
+    UnlockTechniquesData("Unlock your wireless Device","In this information you will learn how to unlock the lock of mobile device.",11),
+    UnlockTechniquesData("Use Button Commands To Reset Your Phone","In this information you will learn how to unlock the lock of mobile device.",12),
+    UnlockTechniquesData("How to unlock Virgin Media Phone","In this information you will learn how to unlock the lock of mobile device.",13),
+    UnlockTechniquesData("Remove Screen/PIN Password without Losing any data","In this information you will learn how to unlock the lock of mobile device.",14),
+    UnlockTechniquesData("Methods to unlock Android without gmail account","In this information you will learn how to unlock the lock of mobile device.",15),
 
 )
 
@@ -106,8 +106,8 @@ enum class brandNamesEnum(){
 }
 
 data class SecretCodes(
-    val title: String,
-    val number: String
+    val number: String,
+    val title: String
 )
 
 var str = "*#*#34971539#*#*"

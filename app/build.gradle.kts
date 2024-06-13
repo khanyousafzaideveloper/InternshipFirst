@@ -61,6 +61,11 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
     implementation(libs.androidx.navigation.compose)
+
+    val playServicesAdsVersion = "23.1.0"
+    implementation("com.google.android.gms:play-services-ads:${playServicesAdsVersion}")
+
+
     //implementation (androidx.webkit:webkit:1.4.0)
 
 
@@ -73,4 +78,5 @@ dependencies {
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+
 }

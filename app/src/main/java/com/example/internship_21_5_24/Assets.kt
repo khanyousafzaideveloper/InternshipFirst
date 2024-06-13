@@ -32,7 +32,7 @@ fun Assets(card: Int){
         factory = { context ->
             WebView(context).apply {
                 settings.javaScriptEnabled = true
-                settings.defaultFontSize = 16
+                settings.textZoom = 250
                 settings.loadsImagesAutomatically = true
                 settings.loadWithOverviewMode = true
                 settings.useWideViewPort = true
@@ -74,7 +74,7 @@ fun AssetsUnlockByTricks(card: Int){
         factory = { context ->
             WebView(context).apply {
                 settings.javaScriptEnabled = true
-                settings.defaultFontSize = 16
+                settings.textZoom = 250
                 settings.loadsImagesAutomatically = true
                 settings.loadWithOverviewMode = true
                 settings.useWideViewPort = true
@@ -106,7 +106,7 @@ fun Assets3(card: Int){
         factory = { context ->
             WebView(context).apply {
                 settings.javaScriptEnabled = true
-                settings.defaultFontSize = 16
+                settings.textZoom = 250
                 settings.loadsImagesAutomatically = true
                 settings.loadWithOverviewMode = true
                 settings.useWideViewPort = true
@@ -136,7 +136,7 @@ fun Assets4(card: Int){
         factory = { context ->
             WebView(context).apply {
                 settings.javaScriptEnabled = true
-                settings.defaultFontSize = 16
+                settings.textZoom = 250
                 settings.loadsImagesAutomatically = true
                 settings.loadWithOverviewMode = true
                 settings.useWideViewPort = true

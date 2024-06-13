@@ -18,6 +18,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,13 +31,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 
 @Composable
 fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onClickIcloud: () -> Unit){
     val viewModel: HomeViewModel = viewModel()
     val context: Context = LocalContext.current
-    Column {
+    Column(modifier=Modifier.fillMaxSize()) {
         Text(
             text = "Free IMEI Checker & iCloud Bypass",
             style = MaterialTheme.typography.bodyLarge,
@@ -51,7 +56,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
         Text(
             text = "Welcome",
             modifier = Modifier
-                .padding(top=28.dp, start = 28.dp, bottom = 8.dp)
+                .padding(top = 28.dp, start = 28.dp, bottom = 8.dp)
                 .width(111.dp),
             color = Color(0xFFFFFFFF),
             fontWeight = FontWeight(700),
@@ -74,21 +79,21 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
         )
         Row(
             modifier = Modifier
-                .fillMaxSize()
+             //   .fillMaxSize()
                 .padding(8.dp)
         ) {
 
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxHeight()
+                  //  .fillMaxHeight()
                     .padding(start = 4.dp, end = 4.dp)
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(4.dp)
-                        .padding(bottom= 4.dp)
+                        .padding(bottom = 4.dp)
                         .height(180.dp)
                         .clip(RoundedCornerShape(10.dp))
                         .clickable { onClick1() }
@@ -144,10 +149,10 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(4.dp)
-                        .padding(bottom= 4.dp)
+                        .padding(bottom = 4.dp)
                         .width(150.dp)
                         .height(180.dp)
-                        .clickable { onClickIcloud()}
+                        .clickable { onClickIcloud() }
                         .clip(RoundedCornerShape(10.dp))
                         .background(color = Color(0xFF6F7BF1))
                 ) {
@@ -252,14 +257,14 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
             Column(
                 modifier = Modifier
                     .weight(1f)
-                    .fillMaxHeight()
+                  //  .fillMaxHeight()
                     .padding(start = 4.dp, end = 4.dp)
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(4.dp)
-                        .padding(bottom= 4.dp)
+                        .padding(bottom = 4.dp)
                         .width(150.dp)
                         .height(160.dp)
                         .clickable { onClick2() }
@@ -313,7 +318,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(4.dp)
-                        .padding(bottom= 4.dp)
+                        .padding(bottom = 4.dp)
                         .width(150.dp)
                         .height(180.dp)
                         .clip(RoundedCornerShape(10.dp))
@@ -418,9 +423,23 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 }
             }
         }
+        BannerAd(modifier = Modifier.fillMaxWidth(), adID ="ca-app-pub-3940256099942544/9214589741")
     }
 }
 
+@Composable
+fun BannerAd(modifier:Modifier, adID: String){
+    val context = LocalContext.current
+    val adView = remember {
+        AdView(context).apply {
+            adUnitId = adID
+            setAdSize(AdSize.BANNER)
+            loadAd(AdRequest.Builder().build())
+        }
+    }
+
+    AndroidView(factory = { adView },modifier.padding(bottom = 12.dp))
+}
 @Preview
 //@Preview(showBackground = true, name = "Small Phone", widthDp = 320, heightDp = 480)
 //@Preview(showBackground = true, name = "Normal Phone", widthDp = 360, heightDp = 640)

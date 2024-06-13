@@ -1,5 +1,7 @@
 package com.example.internship_21_5_24
 
+import android.content.ClipboardManager
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -21,15 +23,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun SecretCodeCard(secretCodes: SecretCodes ){
+    val clipboardManager: androidx.compose.ui.platform.ClipboardManager = LocalClipboardManager.current
+    val context: Context = LocalContext.current
+    val viewModel:HomeViewModel = viewModel()
     Box(modifier= Modifier
         .padding(start = 20.dp, top = 16.dp, end = 20.dp)
         .fillMaxWidth()
@@ -75,7 +84,7 @@ fun SecretCodeCard(secretCodes: SecretCodes ){
                             .height(18.dp)
                             .width(18.dp)
                             .clip(RoundedCornerShape(4.dp))
-                            .clickable { }
+                            .clickable { clipboardManager.setText(AnnotatedString(secretCodes.number)) }
                     )
 
                     Image(
@@ -87,7 +96,7 @@ fun SecretCodeCard(secretCodes: SecretCodes ){
                             .height(18.dp)
                             .width(18.dp)
                             .clip(RoundedCornerShape(4.dp))
-                            .clickable { }
+                            .clickable { viewModel.shareEMEICode(context, secretCodes.number, secretCodes.title) }
                     )
 
                     Image(
@@ -99,7 +108,7 @@ fun SecretCodeCard(secretCodes: SecretCodes ){
                             .height(18.dp)
                             .width(18.dp)
                             .clip(RoundedCornerShape(4.dp))
-                            .clickable { }
+                            .clickable { viewModel.shareEMEICodeToCall(context, secretCodes.number)}
                     )
 
                 }

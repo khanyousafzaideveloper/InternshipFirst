@@ -2,10 +2,18 @@ package com.example.internship_21_5_24
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -13,14 +21,30 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 
-@SuppressLint("SuspiciousIndentation")
+@SuppressLint("SuspiciousIndentation", "InvalidColorHexValue")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProjectApp(
    navController: NavHostController = rememberNavController()
 ){
    Scaffold(
-      topBar ={}
+//      topBar ={
+//         CenterAlignedTopAppBar(
+//            title =  {
+//               Text(text = "Top App Bar", color = Color.White)
+//            },
+//            colors = TopAppBarDefaults.smallTopAppBarColors(Color(0xFF561F7F)),
+//            navigationIcon = {
+//               IconButton(onClick = { }) {
+//                  Icon(
+//                     imageVector = Icons.Filled.KeyboardArrowLeft,
+//                     contentDescription = "",
+//                     tint = Color.White
+//                  )
+//               }
+//            },
+//            )
+//      }
    ) {
    contentPadding ->
       BackgroundImage()
