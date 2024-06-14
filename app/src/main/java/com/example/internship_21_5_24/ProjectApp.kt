@@ -155,5 +155,4 @@ enum class ProjectScreens() {
    UnlockWithTricks,
    UnlockNetworkOfYourPhone,
    IcloudWebPage,
-   AssetScreen
 }

@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -43,77 +44,66 @@ fun SecretCodeCard(secretCodes: SecretCodes ){
         .padding(start = 20.dp, top = 16.dp, end = 20.dp)
         .fillMaxWidth()
         .clip(RoundedCornerShape(8.dp))
-        .clickable { }
         .background(color = Color(0xFFFFFFFF)),
     ) {
-            Column {
-                Text(
-                    text = secretCodes.title,
-                    modifier = Modifier
-                        .padding(start = 12.dp, top = 12.dp)
-                        .fillMaxWidth()
-                        .width(160.dp),
-                    fontWeight = FontWeight(700),
-                    fontSize = 16.sp,
-                    style = TextStyle(
-                        lineHeight = 16.sp
-                    )
-                )
-                Text(
-                    text = secretCodes.number,
-                    modifier = Modifier
-                        .padding(start = 12.dp, top = 12.dp)
-                        .fillMaxWidth()
-                        .width(40.dp),
-                    fontWeight = FontWeight(500),
-                    fontSize = 14.sp,
-                    style = TextStyle(
-                        lineHeight = 12.sp
-                    )
-                )
-                Row(modifier= Modifier
+        Column {
+            Text(
+                text = secretCodes.title,
+                modifier = Modifier
+                    .padding(start = 12.dp, top = 12.dp)
                     .fillMaxWidth()
-                    .padding(end = 12.dp, bottom = 12.dp), horizontalArrangement = Arrangement.End){
+                    .width(160.dp),
+                fontWeight = FontWeight(700),
+                fontSize = 16.sp,
+                style = TextStyle(
+                    lineHeight = 16.sp
+                )
+            )
+            Text(
+                text = secretCodes.number,
+                modifier = Modifier
+                    .padding(start = 12.dp, top = 12.dp)
+                    .fillMaxWidth()
+                    .width(40.dp),
+                fontWeight = FontWeight(500),
+                fontSize = 14.sp,
+                style = TextStyle(
+                    lineHeight = 12.sp
+                )
+            )
+            Row(modifier= Modifier
+                .fillMaxWidth()
+                .padding(end = 12.dp, bottom = 12.dp), horizontalArrangement = Arrangement.End){
 
-                    Image(
-                        painter = painterResource(id = R.drawable.file2),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .padding(end = 12.dp)
-                            .border(width = 1.dp, color = Color(0xFF582085))
-                            .height(18.dp)
-                            .width(18.dp)
-                            .clip(RoundedCornerShape(4.dp))
-                            .clickable { clipboardManager.setText(AnnotatedString(secretCodes.number)) }
-                    )
+                IconButton(
+                    iconResId = R.drawable.file2,
+                    onClick = { clipboardManager.setText(AnnotatedString(secretCodes.number)) }
+                )
+                IconButton(
+                    iconResId = R.drawable.share2,
+                    onClick = { viewModel.shareEMEICode(context, secretCodes.number, secretCodes.title) }
+                )
 
-                    Image(
-                        painter = painterResource(id = R.drawable.share2),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .padding(end = 12.dp)
-                            .border(width = 1.dp, color = Color(0xFF582085))
-                            .height(18.dp)
-                            .width(18.dp)
-                            .clip(RoundedCornerShape(4.dp))
-                            .clickable { viewModel.shareEMEICode(context, secretCodes.number, secretCodes.title) }
-                    )
+                IconButton(
+                    iconResId = R.drawable.group_307,
+                    onClick = { viewModel.shareEMEICodeToCall(context, secretCodes.number) }
+                )
 
-                    Image(
-                        painter = painterResource(id = R.drawable.group_307),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .padding(end = 12.dp)
-                            .border(width = 1.dp, color = Color(0xFF582085))
-                            .height(18.dp)
-                            .width(18.dp)
-                            .clip(RoundedCornerShape(4.dp))
-                            .clickable { viewModel.shareEMEICodeToCall(context, secretCodes.number)}
-                    )
-
-                }
             }
+        }
     }
+}
+@Composable
+fun IconButton(iconResId: Int, onClick: () -> Unit) {
+    Image(
+        painter = painterResource(id = iconResId),
+        contentDescription = null,
+        modifier = Modifier
+            .padding(end = 8.dp)
+            .size(24.dp)
+            .clip(RoundedCornerShape(4.dp))
+            .clickable { onClick() }
+    )
 }
 @Composable
 fun SecretCodeListScreen( selectedBrand: String) {
@@ -154,7 +144,7 @@ fun SecretCodeListScreen( selectedBrand: String) {
             else -> emptyList()
         }
     }
-    LazyColumn{
+    LazyColumn(userScrollEnabled = true){
         items(secretCodes) { secret ->
             secret?.let {
                 SecretCodeCard(it)
