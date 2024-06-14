@@ -50,9 +50,13 @@ fun ProjectApp(
       BackgroundImage()
       NavHost(
          navController = navController,
-         startDestination = ProjectScreens.Home.name,
+         startDestination = ProjectScreens.Start.name,
          modifier = Modifier.padding(contentPadding)
       ){
+
+         composable(route = ProjectScreens.Start.name){
+            StartScreen(onClick = { navigateTo(navController, ProjectScreens.Home) })
+         }
          composable(route=ProjectScreens.Home.name){
             HomeScreen(
                onClick1 = { navigateTo(navController, ProjectScreens.UnlockTechniques) },
@@ -146,6 +150,7 @@ private fun navigateTo(navController: NavHostController, screen: ProjectScreens)
 }
 
 enum class ProjectScreens() {
+                            Start,
    Home,
    UnlockTechniques,
    UnlockBySoftware,

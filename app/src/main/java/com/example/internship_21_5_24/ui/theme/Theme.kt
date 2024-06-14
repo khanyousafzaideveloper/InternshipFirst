@@ -1,7 +1,9 @@
 package com.example.internship_21_5_24.ui.theme
 
 import android.app.Activity
+import android.app.StatusBarManager
 import android.os.Build
+import android.view.Window
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme

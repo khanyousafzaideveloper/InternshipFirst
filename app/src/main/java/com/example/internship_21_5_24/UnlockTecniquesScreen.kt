@@ -1,15 +1,12 @@
 package com.example.internship_21_5_24
 
 import android.annotation.SuppressLint
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -30,7 +27,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.AndroidView
 
 //@Preview
 @SuppressLint("SuspiciousIndentation", "SetJavaScriptEnabled")
@@ -52,7 +48,7 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesD
             .background(color = Color(0xFFFFFFFF))
 
         ) {
-            Row() {
+            Row{
                 Image(
                     painter = painterResource(id = R.drawable.group_507),
                     contentDescription =null,
@@ -94,8 +90,7 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesD
 
 @Composable
 fun UnlockTechListScreen(cards: List<UnlockTechniquesData>, onClick: (UnlockTechniquesData) -> Unit) {
-    LazyColumn(
-    ) {
+    LazyColumn{
         items(cards) { card ->
             UnlockTechniquesCard(card = card, onClick = onClick)
         }
