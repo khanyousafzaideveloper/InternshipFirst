@@ -100,7 +100,7 @@ fun SecretCodeCard(secretCodes: SecretCodes ){
                     )
 
                     Image(
-                        painter = painterResource(id = R.drawable.call2),
+                        painter = painterResource(id = R.drawable.group_307),
                         contentDescription = null,
                         modifier = Modifier
                             .padding(end = 12.dp)
@@ -134,7 +134,7 @@ fun SecretCodeListScreen( selectedBrand: String) {
             brandNamesEnum.QMOBILE.toString()-> secretCodesList_qmobile
             brandNamesEnum.CHINA.toString()-> secretCodesList_china
             brandNamesEnum.GENERIC.toString()-> secretCodesList_Generic
-            brandNamesEnum.MICROSOFT_WINDOW.toString()-> secretCodesList_microsoft_windows
+            brandNamesEnum.MICROSOFTWINDOW.toString()-> secretCodesList_microsoft_windows
             brandNamesEnum.VIVO.toString()-> secretCodesList_vivo
             brandNamesEnum.ACER.toString()-> secretCodesList_acer
             brandNamesEnum.NOKIA.toString()-> secretCodesList_nokia
@@ -144,21 +144,20 @@ fun SecretCodeListScreen( selectedBrand: String) {
             brandNamesEnum.HUAWEI.toString() -> secretCodesList_Huawei
             brandNamesEnum.IPHONE.toString()-> secretCodesList_iphone
             brandNamesEnum.ZTE.toString()-> secretCodes_zte
-            brandNamesEnum.One_Plus.toString()-> secretCodes_oneplus
+            brandNamesEnum.OnePlus.toString()-> secretCodes_oneplus
             brandNamesEnum.Plam.toString()-> secretCodesList_plam
             brandNamesEnum.AMOL.toString()-> secretCodes_amol
             brandNamesEnum.BQ.toString()-> secretCodesList_bq
-            brandNamesEnum.I_Mobile.toString()-> secretCodes_imobile
+            brandNamesEnum.IMobile.toString()-> secretCodes_imobile
             brandNamesEnum.LEECO.toString()-> secretCodesList_leeco
 
             else -> emptyList()
         }
     }
-    LazyColumn(
-    ) {
+    LazyColumn{
         items(secretCodes) { secret ->
-            if (secret != null) {
-                SecretCodeCard(secret)
+            secret?.let {
+                SecretCodeCard(it)
             }
         }
     }

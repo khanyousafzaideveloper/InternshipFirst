@@ -57,18 +57,6 @@ val UnlockNetworkOfYourPhoneList = listOf(
     UnlockTechniquesData("Unlock You Phone Fast and Secure", "In this information you will learn how to unlock the lock of mobile device.", 3),
     )
 
-data class BrandNames (
-    val name: String
-)
-val brandNameList = listOf(
-    BrandNames("SAMSUNG"),
-    BrandNames( "REAlME"),
-    BrandNames("INFINIX"),
-    BrandNames("LENOVO"),
-    BrandNames("BLACKBERRY"),
-    BrandNames("MOTOROLA")
-)
-
 enum class brandNamesEnum(){
     SAMSUNG,
     INFINIX,
@@ -82,7 +70,7 @@ enum class brandNamesEnum(){
     QMOBILE,
     CHINA,
     GENERIC,
-    MICROSOFT_WINDOW,
+    MICROSOFTWINDOW,
     HUAWEI,
     VIVO,
     ACER,
@@ -94,15 +82,12 @@ enum class brandNamesEnum(){
     IPHONE,
     RealMe,
     ZTE,
-    One_Plus,
+    OnePlus,
     Plam,
     AMOL,
     BQ,
-    I_Mobile,
+    IMobile,
     LEECO,
-
-
-
 }
 
 data class SecretCodes(

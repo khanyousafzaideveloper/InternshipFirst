@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -41,11 +42,20 @@ import com.google.android.gms.ads.AdView
 import kotlinx.coroutines.delay
 
 @Composable
-fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onClickIcloud: () -> Unit){
+fun HomeScreen(
+    onClick1: () -> Unit,
+    onClick2: () -> Unit,
+    onClick3:()-> Unit,
+    onClickIcloud: () -> Unit
+){
+
     val viewModel: HomeViewModel = viewModel()
     val context: Context = LocalContext.current
     val activity = context as? Activity
-    Column(modifier=Modifier.fillMaxSize()) {
+
+    Column(
+        modifier=Modifier.fillMaxSize()
+    ) {
         Text(
             text = "Free IMEI Checker & iCloud Bypass",
             style = MaterialTheme.typography.bodyLarge,
@@ -57,22 +67,16 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
             fontSize = 17.sp,
             textAlign = TextAlign.Center
         )
-        LaunchedEffect(Unit) {
-            activity?.let {
-                loadAndShowInterstitialAd(it)
-                delay(6800)
-            }
-        }
-//        Button(onClick = {
-//            activity?.let { loadAndShowInterstitialAd(it) }
+//        LaunchedEffect(Unit) {
+//            activity?.let {
+//                loadAndShowInterstitialAd(it)
+//                delay(6900)
 //            }
-//        ) {
-//            Text("Show add")
 //        }
         Text(
             text = "Welcome",
             modifier = Modifier
-                .padding(top = 28.dp, start = 28.dp, bottom = 8.dp)
+                .padding(top = 8.dp, start = 28.dp, bottom = 8.dp)
                 .width(111.dp),
             color = Color(0xFFFFFFFF),
             fontWeight = FontWeight(700),
@@ -81,6 +85,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 lineHeight = 15.sp
             )
         )
+
         Text(
             text = "A Magical Way to Unlock or bypass",
             modifier = Modifier
@@ -93,6 +98,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 lineHeight = 14.sp
             )
         )
+
         Row(
             modifier = Modifier
              //   .fillMaxSize()
@@ -103,13 +109,13 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 modifier = Modifier
                     .weight(1f)
                     //  .fillMaxHeight()
-                    .padding(start = 4.dp, end = 4.dp)
+                    .padding(start = 6.dp, end = 4.dp)
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(4.dp)
-                        .padding(bottom = 4.dp)
+                        .padding(bottom = 6.dp)
                         .height(180.dp)
                         .clip(RoundedCornerShape(10.dp))
                         .clickable { onClick1() }
@@ -117,7 +123,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 ) {
                     Column( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                         Image(
-                            painter = painterResource(id = R.drawable.unlock_technique_icon),
+                            painter = painterResource(id = R.drawable.group_503),
                             contentDescription = null,
                             modifier = Modifier
                                 //  .padding(top = 187.dp - 174.dp, start = 66.dp - 20.dp)
@@ -165,7 +171,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(4.dp)
-                        .padding(bottom = 4.dp)
+                        .padding(bottom = 6.dp)
                         .width(150.dp)
                         .height(180.dp)
                         .clickable { onClickIcloud() }
@@ -174,14 +180,14 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 ) {
                     Column( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                         Image(
-                            painter = painterResource(id = R.drawable.unlock_icloud_icon_1_),
+                            painter = painterResource(id = R.drawable.group_502),
                             contentDescription = null,
                             modifier = Modifier
                                 // .padding(top = 187.dp - 174.dp, start = 66.dp - 20.dp)
                                 .padding(top = 16.dp)
                                 .align(Alignment.CenterHorizontally)
-                                .width(58.96.dp)
-                                .height(59.52.dp)
+                                .width(70.dp)
+                                .height(48.14.dp)
                         )
                         Spacer(modifier = Modifier.padding(8.dp))
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -234,7 +240,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                                 .padding(top = 16.dp)
                                 .align(Alignment.CenterHorizontally)
                                 .width(58.96.dp)
-                                .height(59.52.dp)
+                                .height(49.52.dp)
                         )
                         Spacer(modifier = Modifier.padding(8.dp))
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -274,13 +280,13 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 modifier = Modifier
                     .weight(1f)
                     //  .fillMaxHeight()
-                    .padding(start = 4.dp, end = 4.dp)
+                    .padding(start = 4.dp, end = 6.dp)
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(4.dp)
-                        .padding(bottom = 4.dp)
+                        .padding(bottom = 6.dp)
                         .width(150.dp)
                         .height(160.dp)
                         .clickable { onClick2() }
@@ -289,7 +295,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 ) {
                     Column( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                         Image(
-                            painter = painterResource(id = R.drawable.secret_code_icon),
+                            painter = painterResource(id = R.drawable.group),
                             contentDescription = null,
                             modifier = Modifier
                                 .padding(top = 16.dp)
@@ -334,7 +340,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(4.dp)
-                        .padding(bottom = 4.dp)
+                        .padding(bottom = 6.dp)
                         .width(150.dp)
                         .height(180.dp)
                         .clip(RoundedCornerShape(10.dp))
@@ -343,13 +349,13 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 ) {
                     Column ( modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally){
                         Image(
-                            painter = painterResource(id = R.drawable.ulock_imei_icon),
+                            painter = painterResource(id = R.drawable.group_1_),
                             contentDescription = null,
                             modifier = Modifier
                                 .padding(top = 16.dp)
                                 .align(Alignment.CenterHorizontally)
                                 .width(58.96.dp)
-                                .height(59.52.dp)
+                                .height(44.52.dp)
                         )
                         Spacer(modifier = Modifier.padding(8.dp))
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -402,7 +408,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                                 .padding(top = 16.dp)
                                 .align(Alignment.CenterHorizontally)
                                 .width(58.96.dp)
-                                .height(59.52.dp)
+                                .height(49.52.dp)
                         )
                         Spacer(modifier = Modifier.padding(8.dp))
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -439,7 +445,7 @@ fun HomeScreen(onClick1: () ->Unit, onClick2: () -> Unit, onClick3:()->Unit, onC
                 }
             }
         }
-    //   BannerAd(modifier = Modifier.fillMaxWidth(), adID ="ca-app-pub-3940256099942544/9214589741")
+        //BannerAd(modifier = Modifier.fillMaxWidth(), adID ="ca-app-pub-3940256099942544/9214589741")
     }
 }
 
