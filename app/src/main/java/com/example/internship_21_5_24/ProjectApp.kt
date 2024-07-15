@@ -14,10 +14,12 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 
@@ -27,24 +29,34 @@ import androidx.navigation.navArgument
 fun ProjectApp(
    navController: NavHostController = rememberNavController()
 ){
+   val currentBackStackEntry = navController.currentBackStackEntryAsState().value
+   val currentRoute = currentBackStackEntry?.destination?.route ?: ""
    Scaffold(
-//      topBar ={
-//         CenterAlignedTopAppBar(
-//            title =  {
-//               Text(text = "Top App Bar", color = Color.White)
-//            },
-//            colors = TopAppBarDefaults.smallTopAppBarColors(Color(0xFF561F7F)),
-//            navigationIcon = {
-//               IconButton(onClick = { }) {
-//                  Icon(
-//                     imageVector = Icons.Filled.KeyboardArrowLeft,
-//                     contentDescription = "",
-//                     tint = Color.White
-//                  )
-//               }
-//            },
-//            )
-//      }
+      topBar = {
+         if (showTopAppBar(currentRoute)) {
+            CenterAlignedTopAppBar(
+               title = {
+                  Text(
+                     text = getTitleForRoute(currentRoute),
+                     color = Color.White, // Set the color to white
+                     fontWeight = FontWeight(700)
+                  )
+
+                     // "Message/{uname}/{id}" -> Text(text = contact_name)
+               },
+               colors = TopAppBarDefaults.smallTopAppBarColors(Color(0xFF561F7F)),
+               navigationIcon = {
+                  IconButton(onClick = { navController.popBackStack() }) {
+                     Icon(
+                        imageVector = Icons.Filled.KeyboardArrowLeft,
+                        contentDescription = "",
+                        tint = Color.White
+                     )
+                  }
+               },
+            )
+         }
+      }
    ) {
    contentPadding ->
       BackgroundImage()
@@ -160,4 +172,31 @@ enum class ProjectScreens() {
    UnlockWithTricks,
    UnlockNetworkOfYourPhone,
    IcloudWebPage,
+}
+
+fun getTitleForRoute(route: String?): String {
+   return when (route) {
+      ProjectScreens.UnlockTechniques.name -> "Unlock Techniques"
+      ProjectScreens.UnlockBySoftware.name -> "Unlock By Software"
+      ProjectScreens.SimUnlock.name -> "Sim Unlock"
+      ProjectScreens.SimUnlockForm.name -> "IMEI Inspection"
+      ProjectScreens.UnlockWithTricks.name -> "Unlock with Tricks"
+      ProjectScreens.SelectBrand.name -> "Select Brand"
+      ProjectScreens.UnlockNetworkOfYourPhone.name -> "Unlock Network of your Phone"
+      "brand/{codes}" -> "Secret Codes"
+      else -> ""
+   }
+}
+
+fun showTopAppBar(route: String?): Boolean {
+   return when (route) {
+      ProjectScreens.Start.name -> false
+      ProjectScreens.Home.name -> false
+      ProjectScreens.IcloudWebPage.name -> false
+      "UnlockBySoftware/{cardId}" ->false
+      "UnlockNetworkPhone/{cardId}" -> false
+      "SimUnlock/{cardId}" -> false
+      "UnlockByTricks/{cardId}" -> false
+      else -> true
+   }
 }
