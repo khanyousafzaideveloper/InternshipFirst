@@ -178,7 +178,7 @@ fun getTitleForRoute(route: String?): String {
    return when (route) {
       ProjectScreens.UnlockTechniques.name -> "Unlock Techniques"
       ProjectScreens.UnlockBySoftware.name -> "Unlock By Software"
-      ProjectScreens.SimUnlock.name -> "Sim Unlock"
+      ProjectScreens.SimUnlock.name -> "SIM Unlock"
       ProjectScreens.SimUnlockForm.name -> "IMEI Inspection"
       ProjectScreens.UnlockWithTricks.name -> "Unlock with Tricks"
       ProjectScreens.SelectBrand.name -> "Select Brand"
