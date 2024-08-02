@@ -9,7 +9,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.internship_21_5_24"
+        applicationId = "com.faappsmania.checkimiedevice"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -61,6 +61,11 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.process)
+    implementation(project(":nativetemplates"))
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.constraintlayout)
 
     val playServicesAdsVersion = "23.1.0"
     implementation("com.google.android.gms:play-services-ads:${playServicesAdsVersion}")
@@ -78,5 +83,6 @@ dependencies {
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+    implementation (project(":nativetemplates"))
 
 }

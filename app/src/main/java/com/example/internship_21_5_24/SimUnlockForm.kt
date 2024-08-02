@@ -36,11 +36,13 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SimUnlockForm() {
+
     var txtF1 by remember { mutableStateOf("") }
     var txtF2 by remember { mutableStateOf("") }
     var txtF3 by remember { mutableStateOf("") }
     var txtF4 by remember { mutableStateOf("") }
     val context: Context = LocalContext.current
+    loadInterstitialAd(context)
     val viewModel: HomeViewModel = viewModel()
         Column(
             modifier = Modifier
@@ -170,14 +172,8 @@ fun SimUnlockForm() {
 
 }
 @Preview
-//@Preview(showBackground = true, name = "Small Phone", widthDp = 320, heightDp = 480)
-//@Preview(showBackground = true, name = "Normal Phone", widthDp = 360, heightDp = 640)
-//@Preview(showBackground = true, name = "Large Phone", widthDp = 400, heightDp = 800)
-//@Preview(showBackground = true, name = "Extra Large Phone", widthDp = 480, heightDp = 853)
-//@Preview(showBackground = true, name = "Large Tablet", widthDp = 800, heightDp = 1280)
-//@Preview(showBackground = true, name = "Full HD TV", widthDp = 1920, heightDp = 1080)
 @Composable
-fun preview4(){
+fun Preview4(){
     BackgroundImage()
     SimUnlockForm()
 }

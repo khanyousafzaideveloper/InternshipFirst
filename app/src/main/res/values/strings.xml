@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Internship-21-5-24</string>
+<!--    testing ad unit -->
+    <string name="banner_Add_id"></string>
+    <string name="InterstitialAd_id"></string>
+    <string name="open_Ad"></string>
+<!--    Actual ad unit-->
+
 </resources>

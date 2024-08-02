@@ -1,29 +1,64 @@
 package com.example.internship_21_5_24
 
 import android.app.Activity
+import android.content.Context
+import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.lifecycle.ViewModel
+import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import kotlinx.coroutines.delay
 
-fun loadAndShowInterstitialAd(activity: Activity) {
+
+var minterstitialAd: InterstitialAd? = null
+val adUnitId: String = "ca-app-pub-3940256099942544/1033173712"
+fun loadInterstitialAd(context: Context) {
     val adRequest = AdRequest.Builder().build()
-
-    InterstitialAd.load(
-        activity,
-        "ca-app-pub-3940256099942544/1033173712", // Replace with your ad unit ID
-        adRequest,
-        object : InterstitialAdLoadCallback() {
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                interstitialAd.show(activity)
-            }
-
-            override fun onAdFailedToLoad(loadAdError: LoadAdError) {
-                // Handle the error
-            }
+    InterstitialAd.load(context, adUnitId, adRequest, object : InterstitialAdLoadCallback() {
+        override fun onAdFailedToLoad(p0: LoadAdError) {
+            super.onAdFailedToLoad(p0)
+            Log.d("adssss","ssssss")
+            minterstitialAd = null
+           // adStatus.invoke(false)
         }
-    )
+
+        override fun onAdLoaded(p0: InterstitialAd) {
+            super.onAdLoaded(p0)
+            minterstitialAd = p0
+           // adStatus.invoke(true)
+        }
+    })
+}
+
+fun showInterstitialAd(context: Context) {
+    minterstitialAd.let { ad ->
+
+        if (ad != null) {
+            ad.fullScreenContentCallback = object : FullScreenContentCallback() {
+                override fun onAdDismissedFullScreenContent() {
+                    super.onAdDismissedFullScreenContent()
+                    minterstitialAd = null
+                }
+
+                override fun onAdImpression() {
+                    super.onAdImpression()
+                }
+
+                override fun onAdClicked() {
+                    super.onAdClicked()
+                }
+            }
+
+            ad.show(context as Activity)
+        }
+    } ?: kotlin.run {
+
+    }
 }

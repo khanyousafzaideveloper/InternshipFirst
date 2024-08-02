@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModel
 
 class HomeViewModel:ViewModel() {
+
     fun moreApps(context: Context){
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse("https://play.google.com/store/apps/developer?id=Appify+Tech")

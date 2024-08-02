@@ -1,6 +1,7 @@
 package com.example.internship_21_5_24
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,9 +17,16 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -27,18 +35,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.delay
 
-//@Preview
 @SuppressLint("SuspiciousIndentation", "SetJavaScriptEnabled")
 @Composable
 fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesData) -> Unit) {
+
     val fontRaleway = FontFamily(
         Font(R.font.raleway_bold, FontWeight.Normal)
     )
     val fontRoboto = FontFamily(
         Font(R.font.roboto_regular, FontWeight.Normal)
     )
-        Box(modifier= Modifier
+        Box(modifier = Modifier
             .padding(start = 20.dp, top = 16.dp, end = 20.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
@@ -48,16 +57,16 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesD
             .background(color = Color(0xFFFFFFFF))
 
         ) {
-            Row{
+            Row {
                 Image(
                     painter = painterResource(id = R.drawable.group_507),
-                    contentDescription =null,
+                    contentDescription = null,
                     modifier = Modifier
                         .padding(8.dp)
                         .width(54.dp)
                         .height(50.48.dp)
 
-                    )
+                )
                 Column {
                     Text(
                         text = card.title,
@@ -74,7 +83,7 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesD
                         text = card.info,
                         modifier = Modifier
                             .padding(start = 8.dp, top = 4.dp, bottom = 4.dp, end = 20.dp),
-                          //  .width(209.dp)
+                        //  .width(209.dp)
                         fontWeight = FontWeight(400),
                         fontFamily = fontRoboto,
                         fontSize = 12.sp,
@@ -85,26 +94,23 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesD
                 }
             }
         }
-    }
+}
 
-
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun UnlockTechListScreen(cards: List<UnlockTechniquesData>, onClick: (UnlockTechniquesData) -> Unit) {
-    LazyColumn{
-        items(cards) { card ->
-            UnlockTechniquesCard(card = card, onClick = onClick)
+
+    val context = LocalContext.current
+        LazyColumn {
+            items(cards) { card ->
+                loadInterstitialAd(context)
+                UnlockTechniquesCard(card = card, onClick = onClick)
+            }
         }
-    }
 }
 
 
 @Preview
-//@Preview(showBackground = true, name = "Small Phone", widthDp = 320, heightDp = 480)
-//@Preview(showBackground = true, name = "Normal Phone", widthDp = 360, heightDp = 640)
-//@Preview(showBackground = true, name = "Large Phone", widthDp = 400, heightDp = 800)
-//@Preview(showBackground = true, name = "Extra Large Phone", widthDp = 480, heightDp = 853)
-//@Preview(showBackground = true, name = "Large Tablet", widthDp = 800, heightDp = 1280)
-//@Preview(showBackground = true, name = "Full HD TV", widthDp = 1920, heightDp = 1080)
 @Composable
 fun UnlockTechniquesPreview() {
     BackgroundImage()
