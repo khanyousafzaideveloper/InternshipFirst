@@ -62,7 +62,7 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.process)
-    implementation(project(":nativetemplates"))
+//    implementation(project(":nativetemplates"))
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.constraintlayout)

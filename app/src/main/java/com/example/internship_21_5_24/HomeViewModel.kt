@@ -3,8 +3,6 @@ package com.example.internship_21_5_24
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModel
 
 class HomeViewModel:ViewModel() {

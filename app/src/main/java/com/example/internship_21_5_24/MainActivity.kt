@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val context: Context = LocalContext.current
                     ProjectApp()
-                    loadInterstitialAd(context)
+                  //  loadInterstitialAd(context)
                 }
             }
         }

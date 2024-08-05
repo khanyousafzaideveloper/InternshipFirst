@@ -6,7 +6,6 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -15,6 +14,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -26,31 +28,38 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.internship_21_5_24.ui.theme.ProjectViewModel
 
 @SuppressLint("SuspiciousIndentation", "InvalidColorHexValue")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProjectApp(
-   navController: NavHostController = rememberNavController()
-){
+fun ProjectApp( viewModel: ProjectViewModel = androidx.lifecycle.viewmodel.compose.viewModel()){
+   var navController:NavHostController= rememberNavController()
    val currentBackStackEntry = navController.currentBackStackEntryAsState().value
-   val currentRoute = currentBackStackEntry?.destination?.route ?: ""
+  // val currentRoute = currentBackStackEntry?.destination?.route ?: ""
+   val currentRoute by viewModel.currentRoute.collectAsState()
+   val navBackStackEntry by navController.currentBackStackEntryAsState()
+   LaunchedEffect(navBackStackEntry) {
+      navBackStackEntry?.destination?.route?.let { route ->
+         viewModel.setCurrentRoute(route)
+      }
+   }
    val activity = (LocalContext.current as? Activity)
-   val context = LocalContext.current
+ //  val context = LocalContext.current
 
-//   BackHandler {
-//      navController.navigate(ProjectScreens.Home.name) {
-//         popUpTo(0) { inclusive = true }
-//      }
-//   }
+   BackHandler {
+      navController.navigate(ProjectScreens.Home.name) {
+         popUpTo(0) { inclusive = true }
+      }
+   }
 
    Scaffold(
       topBar = {
-         if (showTopAppBar(currentRoute)) {
+         if (viewModel.showTopAppBar(currentRoute)) {
             CenterAlignedTopAppBar(
                title = {
                   Text(
-                     text = getTitleForRoute(currentRoute),
+                     text = viewModel.getTitleForRoute(currentRoute),
                      color = Color.White,
                      fontWeight = FontWeight(700)
                   )
@@ -87,11 +96,11 @@ fun ProjectApp(
                onClick3 = { navigateTo(navController, ProjectScreens.SimUnlockForm) },
                onClickIcloud = { navigateTo(navController, ProjectScreens.IcloudWebPage) }
             )
-//            BackHandler {
-//               if(currentRoute == ProjectScreens.Home.name){
-//                  activity?.finish()
-//               }
-//            }
+            BackHandler {
+               if(currentRoute == ProjectScreens.Home.name){
+                  activity?.finish()
+               }
+            }
          }
          composable(route=ProjectScreens.UnlockTechniques.name){
             UnlockTechListScreen(cards = UnlockTechDataList, onClick = {
@@ -159,7 +168,7 @@ fun ProjectApp(
 
          composable(route=ProjectScreens.SimUnlockForm.name){
             SimUnlockForm()
-            loadInterstitialAd(context = context)
+           // loadInterstitialAd(context = context)
          }
          composable(route=ProjectScreens.UnlockWithTricks.name){
             UnlockWithTricksScreen(cards = UnlockWithTricksList, navController)
@@ -191,29 +200,29 @@ enum class ProjectScreens {
    IcloudWebPage,
 }
 
-fun getTitleForRoute(route: String?): String {
-   return when (route) {
-      ProjectScreens.UnlockTechniques.name -> "Unlock Techniques"
-      ProjectScreens.UnlockBySoftware.name -> "Unlock By Software"
-      ProjectScreens.SimUnlock.name -> "SIM Unlock"
-      ProjectScreens.SimUnlockForm.name -> "IMEI Inspection"
-      ProjectScreens.UnlockWithTricks.name -> "Unlock with Tricks"
-      ProjectScreens.SelectBrand.name -> "Select Brand"
-      ProjectScreens.UnlockNetworkOfYourPhone.name -> "Unlock Network of your Phone"
-      "brand/{codes}" -> "Secrets Codes"
-      else -> ""
-   }
-}
-
-fun showTopAppBar(route: String?): Boolean {
-   return when (route) {
-      ProjectScreens.Start.name -> false
-      ProjectScreens.Home.name -> false
-      ProjectScreens.IcloudWebPage.name -> false
-      "UnlockBySoftware/{cardId}" ->false
-      "UnlockNetworkPhone/{cardId}" -> false
-      "SimUnlock/{cardId}" -> false
-      "UnlockByTricks/{cardId}" -> false
-      else -> true
-   }
-}
+//fun getTitleForRoute(route: String?): String {
+//   return when (route) {
+//      ProjectScreens.UnlockTechniques.name -> "Unlock Techniques"
+//      ProjectScreens.UnlockBySoftware.name -> "Unlock By Software"
+//      ProjectScreens.SimUnlock.name -> "SIM Unlock"
+//      ProjectScreens.SimUnlockForm.name -> "IMEI Inspection"
+//      ProjectScreens.UnlockWithTricks.name -> "Unlock with Tricks"
+//      ProjectScreens.SelectBrand.name -> "Select Brand"
+//      ProjectScreens.UnlockNetworkOfYourPhone.name -> "Unlock Network of your Phone"
+//      "brand/{codes}" -> "Secrets Codes"
+//      else -> ""
+//   }
+//}
+//
+//fun showTopAppBar(route: String?): Boolean {
+//   return when (route) {
+//      ProjectScreens.Start.name -> false
+//      ProjectScreens.Home.name -> false
+//      ProjectScreens.IcloudWebPage.name -> false
+//      "UnlockBySoftware/{cardId}" ->false
+//      "UnlockNetworkPhone/{cardId}" -> false
+//      "SimUnlock/{cardId}" -> false
+//      "UnlockByTricks/{cardId}" -> false
+//      else -> true
+//   }
+//}

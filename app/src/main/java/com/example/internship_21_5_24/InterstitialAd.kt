@@ -2,23 +2,16 @@ package com.example.internship_21_5_24
 
 import android.app.Activity
 import android.content.Context
-import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.lifecycle.ViewModel
-import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
-import kotlinx.coroutines.delay
 
 
 var minterstitialAd: InterstitialAd? = null
-val adUnitId: String = "ca-app-pub-3940256099942544/1033173712"
+val adUnitId: String = "ca-app-pub-4235516739414575/6016881189"
 fun loadInterstitialAd(context: Context) {
     val adRequest = AdRequest.Builder().build()
     InterstitialAd.load(context, adUnitId, adRequest, object : InterstitialAdLoadCallback() {
@@ -58,7 +51,5 @@ fun showInterstitialAd(context: Context) {
 
             ad.show(context as Activity)
         }
-    } ?: kotlin.run {
-
     }
 }

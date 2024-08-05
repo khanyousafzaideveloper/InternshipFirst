@@ -15,5 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Internship-21-5-24"
 include(":app")
-
 include (":nativetemplates")
+
+

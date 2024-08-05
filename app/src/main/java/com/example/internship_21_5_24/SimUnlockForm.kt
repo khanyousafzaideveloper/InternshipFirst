@@ -42,7 +42,7 @@ fun SimUnlockForm() {
     var txtF3 by remember { mutableStateOf("") }
     var txtF4 by remember { mutableStateOf("") }
     val context: Context = LocalContext.current
-    loadInterstitialAd(context)
+   // loadInterstitialAd(context)
     val viewModel: HomeViewModel = viewModel()
         Column(
             modifier = Modifier
@@ -163,7 +163,7 @@ fun SimUnlockForm() {
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight(700),
-                        lineHeight = 16.sp,
+                      //  lineHeight = 16.sp,
                         color = Color(0xFF561F82)
                     )
                 )

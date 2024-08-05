@@ -47,14 +47,11 @@ fun SelectBrandScreen(brand: brandNamesEnum, navController: NavController){
                     .width(54.dp)
                     .height(50.48.dp)
             )
-           // Box(modifier= Modifier.fillMaxWidth() .align(Alignment.CenterVertically)) {
                 Text(
                     text = brand.name,
                     modifier = Modifier
                         .padding(end = 16.dp)
-                        //.height(18.dp)
                         .fillMaxWidth()
-
                         .width(90.dp),
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight(600),
@@ -70,10 +67,7 @@ fun SelectBrandScreen(brand: brandNamesEnum, navController: NavController){
 
 @Composable
 fun SelectBrandListScreen(brands: List<brandNamesEnum>, navController: NavController) {
-    LazyColumn(
-        // contentPadding = PaddingValues(0.dp),
-        // verticalArrangement = Arrangement.spacedBy(4.dp)
-    ) {
+    LazyColumn{
         items(brands) { brand ->
             SelectBrandScreen(brand, navController)
         }

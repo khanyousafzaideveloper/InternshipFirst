@@ -3,18 +3,14 @@ package com.example.internship_21_5_24
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
-import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.activity.compose.BackHandler
 import androidx.appcompat.widget.AppCompatButton
-import android.graphics.Color as AndroidColor
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,7 +23,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -59,9 +54,6 @@ import com.google.android.gms.ads.nativead.MediaView
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdOptions
 import com.google.android.gms.ads.nativead.NativeAdView
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
 
 @Composable
 fun HomeScreen(
@@ -169,7 +161,7 @@ fun HomeScreen(
                                 style = TextStyle(
                                     fontWeight = FontWeight(700),
                                     fontSize = 15.sp,
-                                    lineHeight = 15.sp,
+                                    //lineHeight = 15.sp,
                                     color = Color(0xFFFFFFFF),
                                 ),
                                 textAlign = TextAlign.Center
@@ -453,11 +445,11 @@ fun HomeScreen(
         }
 
         //Native Add
-       NativeAdMediaView(nativeAdId = "ca-app-pub-4235516739414575/7671478288", modifier = Modifier.fillMaxWidth())
+       NativeAdMediaView(nativeAdId = "ca-app-pub-3940256099942544/2247696110", modifier = Modifier.fillMaxWidth())
     }
 }
 
-@SuppressLint("InflateParams")
+@SuppressLint("InflateParams", "ResourceType")
 @Composable
 fun NativeAdMediaView(
     nativeAdId: String,
@@ -502,18 +494,18 @@ fun NativeAdMediaView(
                 modifier = Modifier
                     .fillMaxWidth()
             ) { view ->
-                val nativeAdView = view.findViewById<NativeAdView>(R.id.native_ad_view)
-                val mediaView = view.findViewById<MediaView>(R.id.media_view)
+                val nativeAdView = view.findViewById<NativeAdView>(com.google.android.ads.nativetemplates.R.id.native_ad_view)
+               // val mediaView = view.findViewById<MediaView>(R.id.media_view)
 
-                nativeAdView.mediaView = mediaView
+              //  nativeAdView.mediaView = mediaView
                 nativeAdView.setNativeAd(it)
 
                 // Get references to the views defined in the XML
-                val iconView = view.findViewById<ImageView>(R.id.icon)
-                val primaryTextView = view.findViewById<TextView>(R.id.primary)
-                val adNotificationView = view.findViewById<TextView>(R.id.ad_notification_view)
-                val ratingBar = view.findViewById<RatingBar>(R.id.rating_bar)
-                val callToActionView = view.findViewById<AppCompatButton>(R.id.cta)
+                val iconView = view.findViewById<ImageView>(com.google.android.ads.nativetemplates.R.id.icon)
+                val primaryTextView = view.findViewById<TextView>(com.google.android.ads.nativetemplates.R.id.primary)
+                val adNotificationView = view.findViewById<TextView>(com.google.android.ads.nativetemplates.R.id.ad_notification_view)
+                val ratingBar = view.findViewById<RatingBar>(com.google.android.ads.nativetemplates.R.id.rating_bar)
+                val callToActionView = view.findViewById<AppCompatButton>(com.google.android.ads.nativetemplates.R.id.cta)
 
                 // Set the views with the ad content
                 primaryTextView.text = it.headline ?: "No headline available"
