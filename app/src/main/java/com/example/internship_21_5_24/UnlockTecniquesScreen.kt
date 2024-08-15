@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,18 +32,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @SuppressLint("SuspiciousIndentation", "SetJavaScriptEnabled")
 @Composable
-fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesData) -> Unit) {
+fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesData) -> Unit, viewModel: ProjectViewModel = viewModel()) {
 
-    val fontRaleway = FontFamily(
-        Font(R.font.raleway_bold, FontWeight.Normal)
-    )
-    val fontRoboto = FontFamily(
-        Font(R.font.roboto_regular, FontWeight.Normal)
-    )
-        Box(modifier = Modifier
+    Box(modifier = Modifier
             .padding(start = 20.dp, top = 16.dp, end = 20.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
@@ -58,8 +54,6 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesD
                     contentDescription = null,
                     modifier = Modifier
                         .padding(8.dp)
-                        .width(54.dp)
-                        .height(50.48.dp)
 
                 )
                 Column {
@@ -68,23 +62,18 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesD
                         modifier = Modifier
                             .padding(top = 4.dp, start = 8.dp),
                         fontWeight = FontWeight(800),
-                        fontFamily = fontRaleway,
+                        fontFamily = viewModel.fontRaleway,
                         fontSize = 14.sp,
-                        style = TextStyle(
-                            lineHeight = 13.sp
-                        )
+                        style = MaterialTheme.typography.bodyMedium
+
                     )
                     Text(
                         text = card.info,
                         modifier = Modifier
                             .padding(start = 8.dp, top = 4.dp, bottom = 4.dp, end = 20.dp),
-                        //  .width(209.dp)
                         fontWeight = FontWeight(400),
-                        fontFamily = fontRoboto,
+                        fontFamily = viewModel.fontRoboto,
                         fontSize = 12.sp,
-                        style = TextStyle(
-                            lineHeight = 15.sp
-                        )
                     )
                 }
             }

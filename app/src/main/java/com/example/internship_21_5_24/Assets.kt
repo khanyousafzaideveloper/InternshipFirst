@@ -9,12 +9,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
+import kotlinx.coroutines.CoroutineScope
+
 
 @SuppressLint("SetJavaScriptEnabled")
 @Composable
 fun Assets(card: Int){
     val context = LocalContext.current
-    loadInterstitialAd(context)
     val url = remember {
         when (card) {
             1 -> "file:///android_asset/tool_lab.html"

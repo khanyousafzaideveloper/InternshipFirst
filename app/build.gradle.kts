@@ -12,8 +12,8 @@ android {
         applicationId = "com.faappsmania.checkimiedevice"
         minSdk = 24
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 3
+        versionName = "1.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -67,8 +67,8 @@ dependencies {
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.constraintlayout)
 
-    val playServicesAdsVersion = "23.1.0"
-    implementation("com.google.android.gms:play-services-ads:${playServicesAdsVersion}")
+  //  val playServicesAdsVersion = "23.1.0"
+    implementation(libs.play.services.ads)
 
 
     //implementation (androidx.webkit:webkit:1.4.0)

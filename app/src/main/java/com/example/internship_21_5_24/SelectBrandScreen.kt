@@ -44,21 +44,21 @@ fun SelectBrandScreen(brand: brandNamesEnum, navController: NavController){
                 contentDescription =null,
                 modifier = Modifier
                     .padding(start = 8.dp, top = 8.dp, bottom = 8.dp)
-                    .width(54.dp)
-                    .height(50.48.dp)
+                    //.width(54.dp)
+                    //.height(50.48.dp)
             )
                 Text(
                     text = brand.name,
                     modifier = Modifier
                         .padding(end = 16.dp)
-                        .fillMaxWidth()
-                        .width(90.dp),
+                        .fillMaxWidth(),
+                       // .width(90.dp),
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight(600),
                     fontSize = 18.sp,
-                    style = TextStyle(
-                        lineHeight = 18.sp
-                    ),
+                    //style = TextStyle(
+                   //     lineHeight = 18.sp
+                  //  ),
                 )
             }
     }

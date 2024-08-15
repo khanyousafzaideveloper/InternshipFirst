@@ -3,9 +3,11 @@ package com.example.internship_21_5_24
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
 
 class HomeViewModel:ViewModel() {
+
 
     fun moreApps(context: Context){
         val intent = Intent(Intent.ACTION_VIEW)

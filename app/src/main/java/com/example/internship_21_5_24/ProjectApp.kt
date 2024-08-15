@@ -28,14 +28,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.internship_21_5_24.ui.theme.ProjectViewModel
 
 @SuppressLint("SuspiciousIndentation", "InvalidColorHexValue")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProjectApp( viewModel: ProjectViewModel = androidx.lifecycle.viewmodel.compose.viewModel()){
    var navController:NavHostController= rememberNavController()
-   val currentBackStackEntry = navController.currentBackStackEntryAsState().value
+  // val currentBackStackEntry = navController.currentBackStackEntryAsState().value
   // val currentRoute = currentBackStackEntry?.destination?.route ?: ""
    val currentRoute by viewModel.currentRoute.collectAsState()
    val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -45,7 +44,6 @@ fun ProjectApp( viewModel: ProjectViewModel = androidx.lifecycle.viewmodel.compo
       }
    }
    val activity = (LocalContext.current as? Activity)
- //  val context = LocalContext.current
 
    BackHandler {
       navController.navigate(ProjectScreens.Home.name) {
@@ -69,7 +67,7 @@ fun ProjectApp( viewModel: ProjectViewModel = androidx.lifecycle.viewmodel.compo
                   IconButton(onClick = { navController.popBackStack() }) {
                      Icon(
                         imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                        contentDescription = "",
+                        contentDescription = "icon",
                         tint = Color.White
                      )
                   }
@@ -85,12 +83,12 @@ fun ProjectApp( viewModel: ProjectViewModel = androidx.lifecycle.viewmodel.compo
          startDestination = ProjectScreens.Start.name,
          modifier = Modifier.padding(contentPadding)
       ){
-
+         var cards = 0
          composable(route = ProjectScreens.Start.name){
             StartScreen(onClick = { navigateTo(navController, ProjectScreens.Home) })
          }
          composable(route=ProjectScreens.Home.name){
-            HomeScreen(
+            HomeScreenW(
                onClick1 = { navigateTo(navController, ProjectScreens.UnlockTechniques) },
                onClick2 = { navigateTo(navController, ProjectScreens.SelectBrand) },
                onClick3 = { navigateTo(navController, ProjectScreens.SimUnlockForm) },
@@ -138,7 +136,7 @@ fun ProjectApp( viewModel: ProjectViewModel = androidx.lifecycle.viewmodel.compo
             route="UnlockBySoftware/{cardId}",
             arguments = listOf(navArgument("cardId") { type = NavType.IntType })
          ){ backStackEntry ->
-            val cards =  backStackEntry.arguments?.getInt("cardId") ?: 0
+               cards =  backStackEntry.arguments?.getInt("cardId") ?: 0
                Assets(cards)
          }
 
@@ -146,7 +144,7 @@ fun ProjectApp( viewModel: ProjectViewModel = androidx.lifecycle.viewmodel.compo
             route="UnlockByTricks/{cardId}",
             arguments = listOf(navArgument("cardId") { type = NavType.IntType })
          ){ backStackEntry ->
-            val cards =  backStackEntry.arguments?.getInt("cardId") ?: 0
+            cards =  backStackEntry.arguments?.getInt("cardId") ?: 0
             AssetsUnlockByTricks(cards)
          }
 
@@ -154,7 +152,7 @@ fun ProjectApp( viewModel: ProjectViewModel = androidx.lifecycle.viewmodel.compo
             route="SimUnlock/{cardId}",
             arguments = listOf(navArgument("cardId") { type = NavType.IntType })
          ){ backStackEntry ->
-            val cards =  backStackEntry.arguments?.getInt("cardId") ?: 0
+            cards =  backStackEntry.arguments?.getInt("cardId") ?: 0
             Assets3(cards)
          }
 
@@ -162,7 +160,7 @@ fun ProjectApp( viewModel: ProjectViewModel = androidx.lifecycle.viewmodel.compo
             route="UnlockNetworkPhone/{cardId}",
             arguments = listOf(navArgument("cardId") { type = NavType.IntType })
          ){ backStackEntry ->
-            val cards =  backStackEntry.arguments?.getInt("cardId") ?: 0
+            cards =  backStackEntry.arguments?.getInt("cardId") ?: 0
             Assets4(cards)
          }
 

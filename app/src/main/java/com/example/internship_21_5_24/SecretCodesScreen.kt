@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -48,25 +49,22 @@ fun SecretCodeCard(secretCodes: SecretCodes ){
                 text = secretCodes.title,
                 modifier = Modifier
                     .padding(start = 12.dp, top = 12.dp)
-                    .fillMaxWidth()
-                    .width(160.dp),
+                    .fillMaxWidth(),
+                   // .width(160.dp),
                 fontWeight = FontWeight(700),
-                fontSize = 16.sp,
-                style = TextStyle(
-                    lineHeight = 16.sp
-                )
+              //  fontSize = 16.sp,
+                style = MaterialTheme.typography.bodyLarge
             )
             Text(
                 text = secretCodes.number,
                 modifier = Modifier
                     .padding(start = 12.dp, top = 12.dp)
-                    .fillMaxWidth()
-                    .width(40.dp),
+                    .fillMaxWidth(),
+                 //   .width(40.dp),
                 fontWeight = FontWeight(500),
-                fontSize = 14.sp,
-                style = TextStyle(
-                    lineHeight = 12.sp
-                )
+               // fontSize = 14.sp,
+                style = MaterialTheme.typography.bodyMedium
+
             )
             Row(modifier= Modifier
                 .fillMaxWidth()

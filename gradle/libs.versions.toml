@@ -12,6 +12,7 @@ foundation-desktop = "1.6.8"
 navigation-compose = "2.7.7"
 lifecycle-process = "2.8.4"
 appcompat = "1.7.0"
+playServicesAdsVersion = "23.1.0"
 runtime-livedata = "1.6.8"
 constraintlayout = "2.1.4"
 
@@ -23,6 +24,7 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "playServicesAdsVersion" }
 ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }

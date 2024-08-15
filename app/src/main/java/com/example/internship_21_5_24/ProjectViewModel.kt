@@ -1,7 +1,9 @@
-package com.example.internship_21_5_24.ui.theme
+package com.example.internship_21_5_24
 
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.ViewModel
-import com.example.internship_21_5_24.ProjectScreens
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -39,4 +41,11 @@ class ProjectViewModel: ViewModel() {
             else -> true
         }
     }
+
+    val fontRaleway = FontFamily(
+        Font(R.font.raleway_bold, FontWeight.Normal)
+    )
+    val fontRoboto = FontFamily(
+        Font(R.font.roboto_regular, FontWeight.Normal)
+    )
 }
