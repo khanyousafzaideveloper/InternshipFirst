@@ -1,10 +1,10 @@
 package com.example.internship_21_5_24
 
-data class UnlockTechniquesData(
-    val title: String,
-    val info: String,
-    val id: Int
-)
+    data class UnlockTechniquesData(
+        val title: String,
+        val info: String,
+        val id: Int
+    )
 
 val UnlockTechDataList = listOf(
     UnlockTechniquesData("Unlock By Software", "In this information you will learn who to unlock the lock of mobile or device.", 1),

@@ -117,6 +117,9 @@ fun ProjectApp( viewModel: ProjectViewModel = androidx.lifecycle.viewmodel.compo
                cards = UnlockBySoftwareList, navController = navController
             )
          }
+         composable(route=ProjectScreens.Success.name){
+            SuccessScreen(navController)
+         }
          composable(route=ProjectScreens.SimUnlock.name){
             SimUnlockScreen(cards = SimUnlockList, navController)
          }
@@ -165,7 +168,7 @@ fun ProjectApp( viewModel: ProjectViewModel = androidx.lifecycle.viewmodel.compo
          }
 
          composable(route=ProjectScreens.SimUnlockForm.name){
-            SimUnlockForm()
+            SimUnlockForm(navController)
            // loadInterstitialAd(context = context)
          }
          composable(route=ProjectScreens.UnlockWithTricks.name){
@@ -196,6 +199,7 @@ enum class ProjectScreens {
    UnlockWithTricks,
    UnlockNetworkOfYourPhone,
    IcloudWebPage,
+   Success
 }
 
 //fun getTitleForRoute(route: String?): String {

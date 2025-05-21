@@ -14,10 +14,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import com.example.internship_21_5_24.ui.theme.Internship21524Theme
+import com.facebook.ads.AudienceNetworkAds
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.google.android.gms.ads.MobileAds
 
 class MainActivity : ComponentActivity() {
@@ -27,10 +30,16 @@ class MainActivity : ComponentActivity() {
             Internship21524Theme {
                 // A surface container using the 'background' color from the theme
                 MobileAds.initialize(this) {}
+                AudienceNetworkAds.initialize(this)
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val systemUiController = rememberSystemUiController()
+                    systemUiController.setNavigationBarColor(
+                        color = Color(0xDF3E217A),
+                        darkIcons = false
+                    )
                     ProjectApp()
                 }
             }

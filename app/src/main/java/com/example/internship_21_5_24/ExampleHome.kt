@@ -78,10 +78,25 @@ fun HomeScreenW(
         WelcomeText()
         SubtitleText()
 
-        Row(modifier = Modifier.padding(start = 12.dp, end = 12.dp, top=12.dp)) {
+        Row(modifier = Modifier
+            .padding(start = 12.dp, end = 12.dp, top=12.dp)) {
             Column(modifier = Modifier
                 .weight(1f)
                 .padding(start = 6.dp, end = 8.dp)) {
+
+                CustomCard(
+                    text = "Unlock IMEI",
+                    description = "Get your IMEI Inspection for Free",
+                    imageResource = R.drawable.group_1_,
+                    backgroundColor = Color(0xFFF6AC57),
+                    height = 180.dp,
+                    onClick = {
+                        if(adIsReady) {
+                            showInterstitialAd(context)
+                        }
+                        onClick3()
+                    }
+                )
                 CustomCard(
                     text = "Unlock Technique",
                     description = "Unlock the Lock of your Mobile Device",
@@ -95,16 +110,6 @@ fun HomeScreenW(
                         onClick1()
                     }
                 )
-
-                CustomCard(
-                    text = "Unlock iCloud",
-                    description = "Unlock the Locks your Mobile Device",
-                    imageResource = R.drawable.group_502,
-                    backgroundColor = Color(0xFF6F7BF1),
-                    height = 180.dp,
-                    onClick = onClickIcloud
-                )
-
                 CustomCard(
                     text = "More Apps",
                     description = "Check our more useful application for free",
@@ -118,25 +123,26 @@ fun HomeScreenW(
                 .weight(1f)
                 .padding(start = 8.dp, end = 6.dp)) {
                 CustomCard(
+                    text = "Unlock iCloud",
+                    description = "Unlock the Locks your Mobile Device",
+                    imageResource = R.drawable.group_502,
+                    backgroundColor = Color(0xFF6F7BF1),
+                    height = 180.dp,
+                    onClick = {
+                        if (adIsReady) {
+                            showInterstitialAd(context)
+                        }
+                        onClickIcloud()
+                    }
+                )
+                CustomCard(
                     text = "Secret Codes",
                     description = "Learn about the Secret Code of other User",
                     imageResource = R.drawable.group,
                     backgroundColor = Color(0xFFED776D),
                     height = 160.dp,
-                    onClick = onClick2
-                )
-
-                CustomCard(
-                    text = "Unlock IMEI",
-                    description = "Get your IMEI Inspection for Free",
-                    imageResource = R.drawable.group_1_,
-                    backgroundColor = Color(0xFFF6AC57),
-                    height = 180.dp,
                     onClick = {
-                        if(adIsReady) {
-                            showInterstitialAd(context)
-                        }
-                        onClick3()
+                        onClick2()
                     }
                 )
 
@@ -152,7 +158,10 @@ fun HomeScreenW(
         }
 
         // Native Ad
-        NativeAdMediaView(nativeAdId = "ca-app-pub-4235516739414575/7671478288", modifier = Modifier.fillMaxWidth())
+        NativeAdMediaView(
+            nativeAdId = "ca-app-pub-4235516739414575/6434590951",
+            modifier = Modifier.fillMaxWidth()
+        )
     }
 }
 
@@ -290,7 +299,6 @@ fun NativeAdMediaView(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            //.padding(top = 1.dp)
     ) {
         nativeAd?.let {
             AndroidView(
@@ -301,7 +309,7 @@ fun NativeAdMediaView(
                     parent
                 },
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxSize()
             ) { view ->
                 val nativeAdView = view.findViewById<NativeAdView>(com.google.android.ads.nativetemplates.R.id.native_ad_view)
                 // val mediaView = view.findViewById<MediaView>(R.id.media_view)

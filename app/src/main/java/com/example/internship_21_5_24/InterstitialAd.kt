@@ -11,7 +11,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
 
 var minterstitialAd: InterstitialAd? = null
-val adUnitId: String = "ca-app-pub-4235516739414575/6016881189"
+val adUnitId: String = "ca-app-pub-4235516739414575/6733139707"
 var adIsReady: Boolean = false
 fun loadInterstitialAd(context: Context) {
     val adRequest = AdRequest.Builder().build()
@@ -42,6 +42,7 @@ fun showInterstitialAd(
                 minterstitialAd = null
                 onAdDismissed?.invoke()
 
+                loadInterstitialAd(context)
             }
 
             override fun onAdImpression() {

@@ -10,10 +10,10 @@ android {
 
     defaultConfig {
         applicationId = "com.faappsmania.checkimiedevice"
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 3
-        versionName = "1.2"
+        minSdk = 25
+        targetSdk = 34
+        versionCode = 9
+        versionName = "1.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -69,9 +69,9 @@ dependencies {
 
   //  val playServicesAdsVersion = "23.1.0"
     implementation(libs.play.services.ads)
+    implementation(libs.audience.network.sdk)
 
-
-    //implementation (androidx.webkit:webkit:1.4.0)
+    implementation (libs.accompanist.systemuicontroller)
 
 
     // implementation(libs.androidx.foundation.desktop)

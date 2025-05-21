@@ -15,19 +15,6 @@ import androidx.navigation.NavController
 @Composable
 fun UnlockBySoftware(cards: List<UnlockTechniquesData>, navController: NavController) {
     val context = LocalContext.current
- //   val items by remember {
-   //     mutableStateOf(cards)
-  //  }
-//    LazyColumn {
-//        items(items, key = { it.id }) { card ->
-//            UnlockTechniquesCard(card = card, onClick = {
-//                navController.navigate("UnlockBySoftware/${card.id}")
-//                loadInterstitialAd(context)
-//                showInterstitialAd(context)
-//            })
-//        }
-//    }
-//
     loadInterstitialAd(context as Activity)
     MainList(navController = navController, path = "UnlockBySoftware", cards = cards, showAd = true)
   //  showInterstitialAd(context)

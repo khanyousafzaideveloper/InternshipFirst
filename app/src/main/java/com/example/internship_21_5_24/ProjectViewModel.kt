@@ -33,6 +33,7 @@ class ProjectViewModel: ViewModel() {
         return when (route) {
             ProjectScreens.Start.name -> false
             ProjectScreens.Home.name -> false
+            ProjectScreens.Success.name ->false
             ProjectScreens.IcloudWebPage.name -> false
             "UnlockBySoftware/{cardId}" -> false
             "UnlockNetworkPhone/{cardId}" -> false

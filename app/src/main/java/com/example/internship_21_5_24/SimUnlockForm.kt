@@ -1,14 +1,17 @@
 package com.example.internship_21_5_24
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -20,160 +23,129 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.navigation.NavController
+import com.example.phone_imei.MyNativeAds
+import com.facebook.ads.NativeAdLayout
 
 @SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SimUnlockForm() {
+fun SimUnlockForm(navController: NavController) {
+    val context = LocalContext.current
+    val activity = remember(context) { context as? Activity }
 
-    var txtF1 by remember { mutableStateOf("") }
-    var txtF2 by remember { mutableStateOf("") }
-    var txtF3 by remember { mutableStateOf("") }
-    var txtF4 by remember { mutableStateOf("") }
-    val context: Context = LocalContext.current
-   // loadInterstitialAd(context)
-    val viewModel: HomeViewModel = viewModel()
+    // Declare state variables for the TextFields
+//    var txtF1 by remember { mutableStateOf("") }
+//    var txtF2 by remember { mutableStateOf("") }
+//    var txtF3 by remember { mutableStateOf("") }
+//    var txtF4 by remember { mutableStateOf("") }
+
+    Column(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(start = 20.dp, end = 20.dp)
+                .weight(10f)
+                .padding(horizontal = 20.dp)
         ) {
             Text(
                 text = "IMEI Inspection",
-                modifier = Modifier
-                    .padding(top = 16.dp)
-                    .width(116.dp),
+                modifier = Modifier.padding(top = 16.dp),
                 style = TextStyle(
                     fontSize = 16.sp,
                     fontWeight = FontWeight(600),
-                    lineHeight = 16.sp,
                     color = Color(0xFFF7F7F7)
                 )
             )
             Text(
                 text = "Feel free so please Send us your phone IMEI and your issues.",
-                modifier = Modifier
-                    .padding(top = 123.dp - 95.dp)
-                    .width(243.dp)
-                    .height(40.dp),
+                modifier = Modifier.padding(vertical = 16.dp),
                 style = TextStyle(
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400),
-                    lineHeight = 20.sp,
                     color = Color(0xFFF7F7F7)
-                )
+                ),
+                maxLines = 1
             )
-            TextField(
-                value = txtF1,
-                onValueChange = { txtF1 = it },
-                label = {
-                    Text(
-                        text = "Your Email",
-                        color = Color(0xFF444444)
-                    )
-                },
-                colors = TextFieldDefaults.textFieldColors(containerColor = Color(0xFFFFFFFF)),
-                modifier = Modifier
-                    .padding(top = 16.dp, bottom = 8.dp)
-                    .fillMaxWidth()
-                    .clip(
-                        RoundedCornerShape(6.dp)
-                    ),
-            )
-            TextField(
-                value = txtF2,
-                onValueChange = { txtF2 = it },
-                label = {
-                    Text(
-                        text = "First Name",
-                        color = Color(0xFF444444)
-                    )
-                },
-                colors = TextFieldDefaults.textFieldColors(containerColor = Color(0xFFFFFFFF)),
-                modifier = Modifier
-                    .padding(top = 16.dp, bottom = 8.dp)
-                    .fillMaxWidth()
-                    .clip(
-                        RoundedCornerShape(6.dp)
-                    )
-            )
-            TextField(
-                value = txtF3,
-                onValueChange = { txtF3 = it },
-                label = {
-                    Text(
-                        text = "Last Name",
-                        color = Color(0xFF444444)
-                    )
-                },
-                colors = TextFieldDefaults.textFieldColors(containerColor = Color(0xFFFFFFFF)),
-                modifier = Modifier
-                    .padding(top = 16.dp, bottom = 8.dp)
 
-                    .fillMaxWidth()
-                    .clip(
-                        RoundedCornerShape(6.dp)
-                    )
-            )
-            TextField(
-                value = txtF4,
-                onValueChange = { txtF4 = it },
-                label = {
-                    Text(
-                        text = "Your Feedback",
-                        color = Color(0xFF444444)
-                    )
-                },
-                colors = TextFieldDefaults.textFieldColors(containerColor = Color(0xFFFFFFFF)),
-                modifier = Modifier
-                    .padding(top = 16.dp, bottom = 8.dp)
-                    .height(91.dp)
-                    .fillMaxWidth()
-                    .clip(
-                        RoundedCornerShape(6.dp)
-                    )
+            // Use the optimized CustomTextField
+            CustomTextField(label = "Your Email")
+            CustomTextField(label = "First Name")
+            CustomTextField(label = "Last Name")
+            CustomTextField(
+                label = "Your Feedback",
+                maxLines = 2, // Pass maxLines to the composable
+                modifier = Modifier.height(91.dp)
             )
             Button(
-                onClick = { viewModel.shareIMEI(context, txtF1, txtF2, txtF3, txtF4) },
-                shape = RectangleShape,
+                onClick = { navController.navigate(ProjectScreens.Success.name) },
+                shape = RoundedCornerShape(6.dp),
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .fillMaxWidth()
-                    .height(50.dp)
-                    .clip(
-                        RoundedCornerShape(6.dp)
-                    ),
-                colors = ButtonDefaults.buttonColors(Color(0xFFFFFFFF)),
-            )
-            {
+                    .height(50.dp),
+                colors = ButtonDefaults.buttonColors(Color.White)
+            ) {
                 Text(
                     text = "Submit",
-                    modifier = Modifier,
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight(700),
-                      //  lineHeight = 16.sp,
                         color = Color(0xFF561F82)
                     )
                 )
             }
         }
-
+        AdView(modifier = Modifier.weight(4f), context = LocalContext.current, activity = remember { context as? Activity })
+    }
 }
-@Preview
+
 @Composable
-fun Preview4(){
-    BackgroundImage()
-    SimUnlockForm()
+fun AdView(modifier: Modifier, context: Context, activity: Activity?) {
+    val nativeAdLayout = remember { NativeAdLayout(context) }
+    AndroidView(
+        factory = { nativeAdLayout },
+        modifier.fillMaxWidth()
+    ) {
+        activity?.let {
+            val myNativeAds = MyNativeAds(activity)
+            myNativeAds.loadNativeAd(
+                nativeAdLayout = nativeAdLayout,
+                isCustomLayout = true,
+                placementId = "937716378294152_937717458294044"
+            )
+        }
+    }
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun CustomTextField(
+    label: String,
+    maxLines: Int = 1,
+    modifier: Modifier = Modifier
+) {
+    var value by remember { mutableStateOf("") }
+    TextField(
+        value = value,
+        onValueChange = {value = it},
+        label = { Text(text = label, color = Color.Black) },
+        colors = TextFieldDefaults.textFieldColors(containerColor = Color.White),
+        modifier = modifier
+            .padding(top = 16.dp)
+            .fillMaxWidth(),
+        maxLines = maxLines,
+        shape = RoundedCornerShape(6.dp),
+        keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done)
+    )
 }

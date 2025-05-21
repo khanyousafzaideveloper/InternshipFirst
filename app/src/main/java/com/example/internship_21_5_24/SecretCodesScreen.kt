@@ -50,9 +50,7 @@ fun SecretCodeCard(secretCodes: SecretCodes ){
                 modifier = Modifier
                     .padding(start = 12.dp, top = 12.dp)
                     .fillMaxWidth(),
-                   // .width(160.dp),
                 fontWeight = FontWeight(700),
-              //  fontSize = 16.sp,
                 style = MaterialTheme.typography.bodyLarge
             )
             Text(
@@ -60,9 +58,7 @@ fun SecretCodeCard(secretCodes: SecretCodes ){
                 modifier = Modifier
                     .padding(start = 12.dp, top = 12.dp)
                     .fillMaxWidth(),
-                 //   .width(40.dp),
                 fontWeight = FontWeight(500),
-               // fontSize = 14.sp,
                 style = MaterialTheme.typography.bodyMedium
 
             )

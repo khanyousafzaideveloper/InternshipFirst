@@ -11,13 +11,6 @@ import androidx.navigation.NavController
 
 @Composable
 fun SimUnlockScreen(cards: List<UnlockTechniquesData>, navController: NavController) {
-
-//    val rememberedCards by remember { mutableStateOf(cards) }
-//    LazyColumn{
-//        items(rememberedCards, key = { it.id }) { card ->
-//            UnlockTechniquesCard(card = card, onClick = {navController.navigate("SimUnlock/${card.id}")})
-//        }
-//    }
     MainList(navController = navController, path = "SimUnlock", cards = cards, showAd = false)
 }
 

@@ -93,7 +93,7 @@ class MyApplication : Application(), Application.ActivityLifecycleCallbacks, Lif
 
         companion object {
             private const val LOG_TAG = "AppOpenAdManager"
-            const val AD_UNIT_ID = "ca-app-pub-4235516739414575/6358396619"
+            const val AD_UNIT_ID = "ca-app-pub-4235516739414575/6418520337"
 
         }
 

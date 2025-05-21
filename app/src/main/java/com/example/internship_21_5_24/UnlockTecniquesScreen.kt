@@ -64,7 +64,6 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesD
                         fontWeight = FontWeight(800),
                         fontFamily = viewModel.fontRaleway,
                         fontSize = 14.sp,
-                        style = MaterialTheme.typography.bodyMedium
 
                     )
                     Text(
@@ -83,17 +82,6 @@ fun UnlockTechniquesCard(card: UnlockTechniquesData, onClick: (UnlockTechniquesD
 @SuppressLint("SuspiciousIndentation")
 @Composable
 fun UnlockTechListScreen(cards: List<UnlockTechniquesData>, onClick: (UnlockTechniquesData) -> Unit) {
-//    val items by remember {
-//        mutableStateOf(cards)
-//    }
-//
-//    val context = LocalContext.current
-//        LazyColumn {
-//            items(items, key = { it.id }) { card ->
-//                loadInterstitialAd(context)
-//                UnlockTechniquesCard(card = card, onClick = onClick)
-//            }
-//        }
     MainListTwo(cards = cards, onClick)
 }
 
